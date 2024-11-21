@@ -56,6 +56,14 @@ function initSearchListener() {
   });
 
     // Gestion des flèches cliquables (HTML)
+
+    function navigateToNextPokemon() {
+      const nextPokemon = pokemons.find(pokemon => pokemon.id === currentPokemonId + 1);
+      if (nextPokemon) {
+        displayPokemon(nextPokemon);
+      }
+    }
+    
     document.getElementById('next').addEventListener('click', navigateToNextPokemon);
     document.getElementById('previous').addEventListener('click', navigateToPreviousPokemon);
   
