@@ -138,6 +138,7 @@ button {
     margin: 0 15px;
 }
 
+/* image */
 #pkm-img {
     background: var(--img-gradient);
     border: 2px solid var(--pokedex-border);
@@ -154,6 +155,7 @@ button {
     height: 100%;
 }
 
+/* types */
 #type-container {
     display: flex;
     justify-content: center;
@@ -217,4 +219,9 @@ button {
 /* footer */
 footer {
     text-align: center;
+}
+
+/* responsive */
+@media screen and (max-width: 1225px) {
+    
 }
