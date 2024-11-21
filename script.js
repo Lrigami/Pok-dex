@@ -64,6 +64,13 @@ function initSearchListener() {
       }
     }
 
+    function navigateToPreviousPokemon() {
+      const prevPokemon = pokemons.find(pokemon => pokemon.id === currentPokemonId - 1);
+      if (prevPokemon) {
+        displayPokemon(prevPokemon);
+      }
+    }
+
     document.getElementById('next').addEventListener('click', navigateToNextPokemon);
     document.getElementById('previous').addEventListener('click', navigateToPreviousPokemon);
   
@@ -87,7 +94,7 @@ function displayPokemon(pokemon) {
 
   detailsContainer.innerHTML = `
     <p class="pokemon-id">#${pokemon.id}</p>
-    <h2 class="pokemon-name">${pokemon.name} (#${pokemon.pokedexId})</h2>
+    <h2 class="pokemon-name">${pokemon.name}</h2>
     <img src="${pokemon.image}" alt="${pokemon.name}">
     <p><strong>Types :</strong></p>
     <div id="type-container">
