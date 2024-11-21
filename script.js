@@ -1,5 +1,29 @@
 let pokemons = []; // Déclare la variable globalement
 
+const translations = {
+  stats: {
+    HP: "PV",
+    attack: "Attaque",
+    defense: "Défense",
+    special_attack: "Attaque spéciale",
+    special_defense: "Défense spéciale",
+    speed: "Vitesse"
+  },
+  damage_relation: {
+    resistant: "Résistant",
+    twice_resistant: "Très résistant",
+    vulnerable: "Vulnérable",
+    no_effect: "Sans effet"
+  },
+  misc: {
+    types: "Types",
+    evolutions: "Évolutions",
+    strengths: "Forces",
+    weaknesses: "Faiblesses",
+    stats: "Statistiques"
+  }
+};
+
 // Charger le fichier JSON
 fetch('./data/pokebuildAPI.json')
   .then(response => {
@@ -55,18 +79,23 @@ function initSearchListener() {
     }
   });
 
-    // Gestion des flèches cliquables (HTML)
-
-    function navigateToNextPokemon() {
-      const nextPokemon = pokemons.find(pokemon => pokemon.id === currentPokemonId + 1);
-      if (nextPokemon) {
-        displayPokemon(nextPokemon);
-      }
+  // Gestion des flèches cliquables (HTML)
+  function navigateToNextPokemon() {
+    const nextPokemon = pokemons.find(pokemon => pokemon.id === currentPokemonId + 1);
+    if (nextPokemon) {
+      displayPokemon(nextPokemon);
     }
+  }
 
-    document.getElementById('next').addEventListener('click', navigateToNextPokemon);
-    document.getElementById('previous').addEventListener('click', navigateToPreviousPokemon);
-  
+  function navigateToPreviousPokemon() {
+    const prevPokemon = pokemons.find(pokemon => pokemon.id === currentPokemonId - 1);
+    if (prevPokemon) {
+      displayPokemon(prevPokemon);
+    }
+  }
+
+  document.getElementById('next').addEventListener('click', navigateToNextPokemon);
+  document.getElementById('previous').addEventListener('click', navigateToPreviousPokemon);
 }
 
 function displayPokemon(pokemon) {
@@ -75,22 +104,25 @@ function displayPokemon(pokemon) {
 
   const resistances = pokemon.apiResistances
     .filter(res => res.damage_relation === 'resistant' || res.damage_relation === 'twice_resistant')
-    .map(res => `<li>${res.name} (${res.damage_multiplier}x)</li>`).join('');
+    .map(res => `<li>${res.name} (${translations.damage_relation[res.damage_relation]}: ${res.damage_multiplier}x)</li>`).join('');
 
   const vulnerabilities = pokemon.apiResistances
     .filter(res => res.damage_relation === 'vulnerable')
-    .map(res => `<li>${res.name} (${res.damage_multiplier}x)</li>`).join('');
+    .map(res => `<li>${res.name} (${translations.damage_relation[res.damage_relation]}: ${res.damage_multiplier}x)</li>`).join('');
 
   const evolutions = pokemon.apiEvolutions.length > 0
     ? pokemon.apiEvolutions.map(evo => `<li>${evo.name} (#${evo.pokedexId})</li>`).join('')
     : '<li>Aucune évolution disponible.</li>';
+
+  const stats = Object.entries(pokemon.stats)
+    .map(([stat, value]) => `<li>${translations.stats[stat] || stat}: ${value}</li>`).join('');
 
   detailsContainer.innerHTML = `
     <div id="pokemon-id-name">
     <p class="pokemon-id">${pokemon.id}</p>
     <h2 class="pokemon-name">${pokemon.name}</h2></div>
     <div id="pkm-img"><img src="${pokemon.image}" alt="${pokemon.name}"></div>
-    <p id="type-p"><strong>Types :</strong></p>
+    <p id="type-p"><strong>${translations.misc.types} :</strong></p>
     <div id="type-container">
       ${pokemon.apiTypes.map(type => `
         <div class="type">
@@ -102,28 +134,28 @@ function displayPokemon(pokemon) {
     
     <div id="pkm-stats">
     <div id="stats">
-    <p><strong>Statistiques :</strong></p>
+    <p><strong>${translations.misc.stats} :</strong></p>
     <ul type="none">
-      ${Object.entries(pokemon.stats).map(([stat, value]) => `<li>${stat}: ${value}</li>`).join('')}
+      ${stats}
     </ul>
     </div>
 
     <div id="strengths">
-    <p><strong>Forces :</strong></p>
+    <p><strong>${translations.misc.strengths} :</strong></p>
     <ul type="none">
       ${resistances || '<li>Aucune force détectée.</li>'}
     </ul>
     </div>
 
     <div id="weaknesses">
-    <p><strong>Faiblesses :</strong></p>
+    <p><strong>${translations.misc.weaknesses} :</strong></p>
     <ul type="none">
       ${vulnerabilities || '<li>Aucune faiblesse détectée.</li>'}
     </ul>
     </div>
 
     <div id="evolutions">
-    <p><strong>Évolutions :</strong></p>
+    <p><strong>${translations.misc.evolutions} :</strong></p>
     <ul type="none">
       ${evolutions}
     </ul>
