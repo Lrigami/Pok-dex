@@ -1,23 +1,31 @@
 @font-face {
     font-family: 'Moltors';
-    src: url('fonts/Moltors-nRzoY.otf') format('otf');
+    src: url('Moltors-nRzoY.otf') format('otf'), 
+    url('moltors-nrzoy-webfont.woff') format('woff'),
+    url('moltors-nrzoy-webfont.woff2') format('woff2');
     font-weight: normal;
     font-style: normal; 
 }
 
 @font-face {
     font-family: 'MoltorsPunch';
-    src: url('fonts/MoltorsPunch-owzYd.otf') format('otf');
+    src: url('MoltorsPunch-owzYd.otf') format('otf')
+    url('moltorspunch-owzyd-webfont.woff') format('woff'),
+    url('moltorspunch-owzyd-webfont.woff2') format('woff2');
     font-weight: normal;
     font-style: normal; 
 }
 
 @font-face {
     font-family: 'PokemonHollow';
-    src: url('fonts/Pokemon_Hollow.ttf') format('ttf');
+    src: url('Pokemon_Hollow.ttf') format('ttf'),
+    url('pokemon_hollow-webfont.woff') format('woff'),
+    url('/pokemon_hollow-webfont.woff2') format('woff2');
 }
 
 @font-face {
     font-family: 'PokemonSolid';
-    src: url('fonts/Pokemon_Solid.ttf') format('ttf');
+    src: url('Pokemon_Solid.ttf') format('ttf'),
+    url('pokemon_solid-webfont.woff') format('woff'),
+    url('pokemon_solid-webfont.woff2') format('woff2');
 }
