@@ -123,7 +123,6 @@ button {
     justify-content: left;
     align-items: center;
     margin-bottom: 10px;
-    letter-spacing: 1.2;
 }
 
 .pokemon-id {
@@ -138,6 +137,10 @@ button {
     align-items: center;
     font-weight: bolder;
     margin: 0 15px;
+}
+
+.pokemon-name {
+    letter-spacing: 1.2;
 }
 
 /* image */
