@@ -56,6 +56,14 @@ function initSearchListener() {
   });
 
     // Gestion des flèches cliquables (HTML)
+
+    function navigateToNextPokemon() {
+      const nextPokemon = pokemons.find(pokemon => pokemon.id === currentPokemonId + 1);
+      if (nextPokemon) {
+        displayPokemon(nextPokemon);
+      }
+    }
+
     document.getElementById('next').addEventListener('click', navigateToNextPokemon);
     document.getElementById('previous').addEventListener('click', navigateToPreviousPokemon);
   
@@ -78,9 +86,9 @@ function displayPokemon(pokemon) {
     : '<li>Aucune évolution disponible.</li>';
 
   detailsContainer.innerHTML = `
-    <img src="${pokemon.image}" alt="${pokemon.name}">
+    <p class="pokemon-id">#${pokemon.id}</p>
     <h2 class="pokemon-name">${pokemon.name} (#${pokemon.pokedexId})</h2>
-    
+    <img src="${pokemon.image}" alt="${pokemon.name}">
     <p><strong>Types :</strong></p>
     <div id="type-container">
       ${pokemon.apiTypes.map(type => `
