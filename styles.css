@@ -2,6 +2,7 @@
     --pokedex-background: #dd0b30;
     --pokedex-border: #7f0512;
     --pokemon-font: "PokemonHollow";
+    --font: 
     --text-color: #222222;
     --stats-background: #222222;
     --stats-text-color: #dddddd; 
@@ -74,7 +75,124 @@ button {
 /* pokedex */
 #pokedex {
     border: 1px solid black;
-    height: auto;
+    min-height: 400px;
+    min-width: 500px;
+    background-color: var(--pokedex-background);
+    color: var(--text-color);
+    margin-top: 30x;
+    border: 4px solid var(--pokedex-border);
+    border-radius: 10px;
+}
+
+/* searchbar */
+#searchbar {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+
+#searchbar label {
+    font-size: 1.3rem;
+}
+
+#pokemon-search {
+    padding-left: 5px;
+    height: 20px;
+}
+
+/* pokemon info */
+#pokemon-id-name {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.pokemon-id {
+    background-color: var(--stats-text-color);
+    font-size: 1.3rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--stats-background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+    margin: 0 15px;
+}
+
+#pkm-img {
+    background-color: var(--stats-text-color);
+    border: 2px solid var(--pokedex-border);
+    border-radius: 5px;
+    width: 80%;
+    height: 300px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#pkm-img img {
+    height: 100%;
+}
+
+#type-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+#type-p {
+    margin-left: 50px;
+    font-size: 1.3rem;
+}
+
+.type {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    background-color: var(--stats-text-color);
+    border: 2px solid var(--pokedex-border);
+    border-radius: 5px;
+    height: 40px;
+    min-width: 110px;
+    padding: 2px 10px 2px 0;
+}
+
+.type span {
+    width: 80%;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bolder;
+}
+
+.type img {
+    height: 100%;
+}
+
+/* statistics */
+#pkm-stats {
+    width: 90%;
+    min-height: 200px;
+    background-color: var(--stats-background);
+    color: var(--stats-text-color);
+    margin: 20px auto;
+    border-radius: 20px;
+    border: 3px solid var(--stats-text-color);
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#pkm-stats > div > p {
+    font-size: 1.25rem;
+    text-decoration: underline;
 }
 
 /* footer */

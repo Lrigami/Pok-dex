@@ -118,10 +118,11 @@ function displayPokemon(pokemon) {
     .map(([stat, value]) => `<li>${translations.stats[stat] || stat}: ${value}</li>`).join('');
 
   detailsContainer.innerHTML = `
-    <p class="pokemon-id">#${pokemon.id}</p>
-    <h2 class="pokemon-name">${pokemon.name}</h2>
-    <img src="${pokemon.image}" alt="${pokemon.name}">
-    <p><strong>${translations.misc.types} :</strong></p>
+    <div id="pokemon-id-name">
+    <p class="pokemon-id">${pokemon.id}</p>
+    <h2 class="pokemon-name">${pokemon.name}</h2></div>
+    <div id="pkm-img"><img src="${pokemon.image}" alt="${pokemon.name}"></div>
+    <p id="type-p"><strong>${translations.misc.types} :</strong></p>
     <div id="type-container">
       ${pokemon.apiTypes.map(type => `
         <div class="type">
@@ -131,24 +132,34 @@ function displayPokemon(pokemon) {
       `).join('')}
     </div>
     
+    <div id="pkm-stats">
+    <div id="stats">
     <p><strong>${translations.misc.stats} :</strong></p>
-    <ul>
+    <ul type="none">
       ${stats}
     </ul>
+    </div>
 
+    <div id="strengths">
     <p><strong>${translations.misc.strengths} :</strong></p>
-    <ul>
+    <ul type="none">
       ${resistances || '<li>Aucune force détectée.</li>'}
     </ul>
+    </div>
 
+    <div id="weaknesses">
     <p><strong>${translations.misc.weaknesses} :</strong></p>
-    <ul>
+    <ul type="none">
       ${vulnerabilities || '<li>Aucune faiblesse détectée.</li>'}
     </ul>
+    </div>
 
+    <div id="evolutions">
     <p><strong>${translations.misc.evolutions} :</strong></p>
-    <ul>
+    <ul type="none">
       ${evolutions}
     </ul>
+    </div>
+    </div>
   `;
 }
