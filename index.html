@@ -6,6 +6,7 @@
         <meta name="description" content="Pokedex">
         <meta name="keywords" content="pokemon, pokedex, attaque, défense, type, pokebuild">
         <title>Pokedex</title>
+        <link rel="stylesheet" href="fonts/fonts.css">
         <link rel="stylesheet" href="styles.css">
         <link rel="icon" type="image/x-icon" href="./favicon.ico">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -14,17 +15,17 @@
 
     <body>
         <header>
-            <h1>Cherchez votre pokémon&nbsp;!</h1>
+            <h1>Cherchez votre <img src="pokemon.svg" alt="logo pokémon">&nbsp;!</h1>
         </header>
 
         <main>
+            <button id="previous"><span class="material-icons">chevron_left</span></button>
             <div id="pokedex">
                 <label for="pokemon-search"></label>
                 <input type="text" id="pokemon-search" placeholder="ex.&nbsp;: pikachu">
                 <div id="pokemon-details"></div>
                 </div>
             </div>
-            <button id="previous"><span class="material-icons">chevron_left</span></button>
             <button id="next"><span class="material-icons">chevron_right</span></button>
         </main>
 

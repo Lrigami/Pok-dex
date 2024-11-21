@@ -1,0 +1,80 @@
+:root {
+    --pokedex-background: #dd0b30;
+    --pokedex-border: #7f0512;
+    --pokemon-font: "PokemonHollow";
+    --text-color: #222222;
+    --stats-background: #222222;
+    --stats-text-color: #dddddd; 
+}
+
+* {
+    margin: 0; 
+    padding: 0;
+}
+
+body {
+    height: 100dvh;
+    width: 100dvw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+/* header */
+header {
+    text-align: center;
+    height: 7%;
+    font-size: 1.2rem;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 img {
+    width: 8rem;
+}
+
+.pokemon {
+    font-family: var(--pokemon-font), Arial, Helvetica, sans-serif;
+}
+
+/* main */
+main {
+    height: 90%;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    position: relative;
+}
+
+#previous, #next {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    position: fixed;
+    top: calc(50% - 20px);
+}
+
+#previous {
+    left: 15%;
+}
+
+#next {
+    right: 15%;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* footer */
+footer {
+    text-align: center;
+    height: 3%;
+}
