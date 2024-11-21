@@ -56,6 +56,7 @@ main {
     justify-content: center;
     gap: 20px;
     position: relative;
+    margin-bottom: 30px;
 }
 
 /* navigation buttons */
@@ -151,8 +152,14 @@ button {
     margin-bottom: 20px;
 }
 
+#pkm-img:hover img {
+    scale: 1.15;
+    filter: contrast(1.5);
+}
+
 #pkm-img img {
     height: 100%;
+    transition: .3s;
 }
 
 /* types */
@@ -218,7 +225,11 @@ button {
 
 /* footer */
 footer {
+    width: 100%;
     text-align: center;
+    position: fixed;
+    bottom: 0;
+    background-color: white;
 }
 
 /* responsive */
