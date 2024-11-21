@@ -79,7 +79,7 @@ function displayPokemon(pokemon) {
 
   detailsContainer.innerHTML = `
     <img src="${pokemon.image}" alt="${pokemon.name}">
-    <h2>${pokemon.name} (#${pokemon.pokedexId})</h2>
+    <h2 class="pokemon-name">${pokemon.name} (#${pokemon.pokedexId})</h2>
     
     <p><strong>Types :</strong></p>
     <div id="type-container">
