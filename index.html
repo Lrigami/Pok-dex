@@ -7,18 +7,19 @@
         <meta name="keywords" content="pokemon, pokedex, attaque, défense, type, pokebuild">
         <title>Pokedex</title>
         <link rel="stylesheet" href="styles.css">
+        <link rel="icon" type="image/x-icon" href="./favicon.ico">
         <script src="script.js"></script>
     </head>
 
     <body>
         <header>
-            <h1>Bienvenue dans le Pokédexé&nbsp;!</h1>
+            <h1>Bienvenue dans le Pokédex&nbsp;!</h1>
         </header>
 
         <main>
             <div id="pokedex">
                 <label for="pokemon-search"></label>
-                <input type="text" id="pokemon-search">
+                <input type="text" id="pokemon-search" placeholder="ex.: Pikachu">
 
                 <div id="pokemon-name"></div>
 
@@ -29,7 +30,20 @@
                     <div id="description"></div>
                 </div>
 
-
+                <div id="pokemon-infos">
+                    <div id="pkm-buttons">
+                        <button>Statistiques</button>
+                        <button>Attaques</button>
+                    </div>
+                    <div id="pokemon-stats">
+                        <div id="statistics"></div>
+                        <div id="abilities"></div>
+                        <div id="type-effectiveness"></div>
+                    </div>
+                    <div id="pokemon-moves">
+                        <div id="moves"></div>
+                    </div>
+                </div>
 
             </div>
         </main>
