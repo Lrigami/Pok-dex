@@ -15,13 +15,9 @@
 @font-face {
     font-family: 'PokemonHollow';
     src: url('fonts/Pokemon_Hollow.ttf') format('ttf');
-    font-weight: normal;
-    font-style: normal;
 }
 
 @font-face {
     font-family: 'PokemonSolid';
-    src: url('fonts/Pokemon_Solid.ttf') format('woff2');
-    font-weight: normal;
-    font-style: normal; 
+    src: url('fonts/Pokemon_Solid.ttf') format('ttf');
 }

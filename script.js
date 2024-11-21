@@ -90,7 +90,7 @@ function displayPokemon(pokemon) {
     <p class="pokemon-id">${pokemon.id}</p>
     <h2 class="pokemon-name">${pokemon.name}</h2></div>
     <div id="pkm-img"><img src="${pokemon.image}" alt="${pokemon.name}"></div>
-    <p><strong>Types :</strong></p>
+    <p id="type-p"><strong>Types :</strong></p>
     <div id="type-container">
       ${pokemon.apiTypes.map(type => `
         <div class="type">
@@ -100,24 +100,34 @@ function displayPokemon(pokemon) {
       `).join('')}
     </div>
     
+    <div id="pkm-stats">
+    <div id="stats">
     <p><strong>Statistiques :</strong></p>
-    <ul>
+    <ul type="none">
       ${Object.entries(pokemon.stats).map(([stat, value]) => `<li>${stat}: ${value}</li>`).join('')}
     </ul>
+    </div>
 
+    <div id="strengths">
     <p><strong>Forces :</strong></p>
-    <ul>
+    <ul type="none">
       ${resistances || '<li>Aucune force détectée.</li>'}
     </ul>
+    </div>
 
+    <div id="weaknesses">
     <p><strong>Faiblesses :</strong></p>
-    <ul>
+    <ul type="none">
       ${vulnerabilities || '<li>Aucune faiblesse détectée.</li>'}
     </ul>
+    </div>
 
+    <div id="evolutions">
     <p><strong>Évolutions :</strong></p>
-    <ul>
+    <ul type="none">
       ${evolutions}
     </ul>
+    </div>
+    </div>
   `;
 }
