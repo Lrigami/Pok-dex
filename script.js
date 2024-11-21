@@ -86,9 +86,10 @@ function displayPokemon(pokemon) {
     : '<li>Aucune évolution disponible.</li>';
 
   detailsContainer.innerHTML = `
-    <p class="pokemon-id">#${pokemon.id}</p>
-    <h2 class="pokemon-name">${pokemon.name} (#${pokemon.pokedexId})</h2>
-    <img src="${pokemon.image}" alt="${pokemon.name}">
+    <div id="pokemon-id-name">
+    <p class="pokemon-id">${pokemon.id}</p>
+    <h2 class="pokemon-name">${pokemon.name}</h2></div>
+    <div id="pkm-img"><img src="${pokemon.image}" alt="${pokemon.name}"></div>
     <p><strong>Types :</strong></p>
     <div id="type-container">
       ${pokemon.apiTypes.map(type => `
