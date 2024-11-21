@@ -54,6 +54,11 @@ function initSearchListener() {
       }
     }
   });
+
+    // Gestion des flèches cliquables (HTML)
+    document.getElementById('next').addEventListener('click', navigateToNextPokemon);
+    document.getElementById('previous').addEventListener('click', navigateToPreviousPokemon);
+  
 }
 
 function displayPokemon(pokemon) {
