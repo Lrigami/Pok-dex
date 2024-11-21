@@ -123,6 +123,7 @@ button {
     justify-content: left;
     align-items: center;
     margin-bottom: 10px;
+    letter-spacing: 1.2;
 }
 
 .pokemon-id {
@@ -153,7 +154,7 @@ button {
 }
 
 #pkm-img:hover img {
-    scale: 1.15;
+    scale: 1.25;
     filter: contrast(1.5);
 }
 
