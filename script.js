@@ -1,4 +1,4 @@
-let pokemons = [];
+let pokemons = []; // Déclare la variable globalement
 
 // Charger le fichier JSON
 fetch('./data/pokebuildAPI.json')
@@ -9,76 +9,101 @@ fetch('./data/pokebuildAPI.json')
     return response.json();
   })
   .then(data => {
-    pokemons = data;
+    pokemons = data; // Remplit la variable avec les données
     console.log('Données chargées:', pokemons);
+
+    // Initialise l'écouteur de la barre de recherche
+    initSearchListener();
   })
   .catch(error => {
     console.error('Erreur :', error);
   });
 
-// Barre de recherche
-document.getElementById('pokemon-search').addEventListener('input', (event) => {
-  const query = event.target.value.trim().toLowerCase();
+let currentPokemonId = null; // Suivi de l'ID du Pokémon actuellement affiché
 
-  // Recherche par ID ou nom
-  const result = pokemons.find(pokemon =>
-    pokemon.id === parseInt(query) || pokemon.name.toLowerCase() === query
-  );
+function initSearchListener() {
+  // Barre de recherche
+  document.getElementById('pokemon-search').addEventListener('input', (event) => {
+    const query = event.target.value.trim().toLowerCase();
 
+    // Recherche par ID ou nom
+    const result = pokemons.find(pokemon =>
+      pokemon.id === parseInt(query) || pokemon.name.toLowerCase() === query
+    );
+
+    if (result) {
+      displayPokemon(result);
+    } else if (query) {
+      document.getElementById('pokemon-details').innerHTML = '<p>Aucun Pokémon trouvé.</p>';
+    }
+  });
+
+  // Gestion des flèches directionnelles
+  document.addEventListener('keydown', (event) => {
+    if (currentPokemonId === null) return;
+
+    if (event.key === 'ArrowRight') {
+      const nextPokemon = pokemons.find(pokemon => pokemon.id === currentPokemonId + 1);
+      if (nextPokemon) {
+        displayPokemon(nextPokemon);
+      }
+    } else if (event.key === 'ArrowLeft') {
+      const prevPokemon = pokemons.find(pokemon => pokemon.id === currentPokemonId - 1);
+      if (prevPokemon) {
+        displayPokemon(prevPokemon);
+      }
+    }
+  });
+}
+
+function displayPokemon(pokemon) {
+  currentPokemonId = pokemon.id; // Met à jour l'ID actuel
   const detailsContainer = document.getElementById('pokemon-details');
-  detailsContainer.innerHTML = '';
 
-  if (result) {
-    // Génère les forces et faiblesses
-    const resistances = result.apiResistances
-      .filter(res => res.damage_relation === 'resistant' || res.damage_relation === 'twice_resistant')
-      .map(res => `<li>${res.name} (${res.damage_multiplier}x)</li>`).join('');
+  const resistances = pokemon.apiResistances
+    .filter(res => res.damage_relation === 'resistant' || res.damage_relation === 'twice_resistant')
+    .map(res => `<li>${res.name} (${res.damage_multiplier}x)</li>`).join('');
 
-    const vulnerabilities = result.apiResistances
-      .filter(res => res.damage_relation === 'vulnerable')
-      .map(res => `<li>${res.name} (${res.damage_multiplier}x)</li>`).join('');
+  const vulnerabilities = pokemon.apiResistances
+    .filter(res => res.damage_relation === 'vulnerable')
+    .map(res => `<li>${res.name} (${res.damage_multiplier}x)</li>`).join('');
 
-    // Génère les évolutions
-    const evolutions = result.apiEvolutions.length > 0
-      ? result.apiEvolutions.map(evo => `<li>${evo.name} (#${evo.pokedexId})</li>`).join('')
-      : '<li>Aucune évolution disponible.</li>';
+  const evolutions = pokemon.apiEvolutions.length > 0
+    ? pokemon.apiEvolutions.map(evo => `<li>${evo.name} (#${evo.pokedexId})</li>`).join('')
+    : '<li>Aucune évolution disponible.</li>';
 
-    // Affiche les informations du Pokémon
-    detailsContainer.innerHTML = `
-      <img src="${result.image}" alt="${result.name}">
-      <h2>${result.name} (#${result.pokedexId})</h2>
-      
-      <p><strong>Types :</strong></p>
-      <div id="type-container">
-        ${result.apiTypes.map(type => `
-          <div class="type">
-            <img src="${type.image}" alt="${type.name}" title="${type.name}">
-            <span>${type.name}</span>
-          </div>
-        `).join('')}
-      </div>
-      
-      <p><strong>Statistiques :</strong></p>
-      <ul>
-        ${Object.entries(result.stats).map(([stat, value]) => `<li>${stat}: ${value}</li>`).join('')}
-      </ul>
+  detailsContainer.innerHTML = `
+    <img src="${pokemon.image}" alt="${pokemon.name}">
+    <h2>${pokemon.name} (#${pokemon.pokedexId})</h2>
+    
+    <p><strong>Types :</strong></p>
+    <div id="type-container">
+      ${pokemon.apiTypes.map(type => `
+        <div class="type">
+          <img src="${type.image}" alt="${type.name}" title="${type.name}">
+          <span>${type.name}</span>
+        </div>
+      `).join('')}
+    </div>
+    
+    <p><strong>Statistiques :</strong></p>
+    <ul>
+      ${Object.entries(pokemon.stats).map(([stat, value]) => `<li>${stat}: ${value}</li>`).join('')}
+    </ul>
 
-      <p><strong>Forces :</strong></p>
-      <ul>
-        ${resistances || '<li>Aucune force détectée.</li>'}
-      </ul>
+    <p><strong>Forces :</strong></p>
+    <ul>
+      ${resistances || '<li>Aucune force détectée.</li>'}
+    </ul>
 
-      <p><strong>Faiblesses :</strong></p>
-      <ul>
-        ${vulnerabilities || '<li>Aucune faiblesse détectée.</li>'}
-      </ul>
+    <p><strong>Faiblesses :</strong></p>
+    <ul>
+      ${vulnerabilities || '<li>Aucune faiblesse détectée.</li>'}
+    </ul>
 
-      <p><strong>Évolutions :</strong></p>
-      <ul>
-        ${evolutions}
-      </ul>
-    `;
-  } else if (query) {
-    detailsContainer.innerHTML = '<p>Aucun Pokémon trouvé.</p>';
-  }
-});
+    <p><strong>Évolutions :</strong></p>
+    <ul>
+      ${evolutions}
+    </ul>
+  `;
+}
