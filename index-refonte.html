@@ -10,6 +10,9 @@
         <link rel="stylesheet" href="styles.css">
         <link rel="icon" type="image/x-icon" href="./favicon.ico">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
     </head>
 
     <body>
@@ -97,23 +100,65 @@
                         <div id="pokemon-screen">
                             <div id="pokemon-statistics" class="">
                                 <div id="pkm-stats">
-                                    <p><span class="strong"></span><span id="stats-text"></span></p>
+                                    <p><span class="strong">Statistiques&nbsp;:</span><span id="stats-text"></span></p>
                                 </div>
                                 <div id="pkm-strengths">
-                                    <p><span class="strong"></span><span id="strengths-text"></span></p>
+                                    <p><span class="strong">Forces&nbsp;:</span><span id="strengths-text"></span></p>
                                 </div>
                                 <div id="pkm-weaknesses">
-                                    <p><span class="strong"></span><span id="weaknesses-text"></span></p>
+                                    <p><span class="strong">Faiblesses&nbsp;:</span><span id="weaknesses-text"></span></p>
                                 </div>
                                 <div id="pkm-evolution">
-                                    <p><span class="strong"></span><span id="evolution-text"></span></p>
+                                    <p><span class="strong">Evolution&nbsp;:</span><span id="evolution-text"></span></p>
                                 </div>
                             </div>
                             <div id="pokemon-search-by-id" class="hidden">
                                 <p>Pokémon n°<span id="entered-id"></span></p>
                             </div>
                             <div id="filter-results" class="hidden">
-                                <p><span>N°</span><span>Pokémon</span></p>
+                                <p id="filter-results-header"><span>N°</span><span>Pokémon</span></p>
+                            </div>
+                        </div>
+                        <div id="pokedex-right-buttons">
+                            <div id="number-buttons">
+                                <button id="button1">1</button>
+                                <button id="button2">2</button>
+                                <button id="button3">3</button>
+                                <button id="button4">4</button>
+                                <button id="button5">5</button>
+                                <button id="button6">6</button>
+                                <button id="button7">7</button>
+                                <button id="button8">8</button>
+                                <button id="button9">9</button>
+                                <button id="button0">0</button>
+                            </div>
+                            <div id="type-and-buttons">
+                                <div id="type-container">
+                                    <div id="main-type"></div>
+                                    <div id="secondary-type" class="hidden"></div>
+                                </div>
+                                <div id="type-container-decorative-buttons">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div id="filter-buttons">
+                                <button id="filter-by">Filtrer par&nbsp;:</button>
+                                <div id="filters-slider">
+                                    <button><span class="material-icons"></span><span>Type</span><span class="material-icons"></span></button>
+                                    
+                                    <!-- <button><span class="material-icons"></span><span>Numéro</span><span class="material-icons"></span></button>
+                                    <button><span class="material-icons"></span><span>Attaque cr.</span><span class="material-icons"></span></button>
+                                    <button><span class="material-icons"></span><span>Attaque décr.</span><span class="material-icons"></span></button>
+                                    <button><span class="material-icons"></span><span>Défense cr.</span><span class="material-icons"></span></button>
+                                    <button><span class="material-icons"></span><span>Défense décr.</span><span class="material-icons"></span></button>
+                                    <button><span class="material-icons"></span><span>Attaque spé. cr.</span><span class="material-icons"></span></button>
+                                    <button><span class="material-icons"></span><span>Attaque spé. décr.</span><span class="material-icons"></span></button>
+                                    <button><span class="material-icons"></span><span>Défense spé. cr.</span><span class="material-icons"></span></button>
+                                    <button><span class="material-icons"></span><span>Défense spé. décr.</span><span class="material-icons"></span></button>
+                                    <button><span class="material-icons"></span><span>Vitesse</span><span class="material-icons"></span></button> -->
+                                </div>
                             </div>
                         </div>
                     </div>
