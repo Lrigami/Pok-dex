@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+        <meta name="description" content="Pokedex">
+        <meta name="keywords" content="pokemon, pokedex, attaque, défense, type, pokebuild">
+        <title>Pokedex</title>
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="icon" type="image/x-icon" href="./favicon.ico">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+
+    <body>
+        <header>
+            <h1>Trouvez votre&nbsp;<img src="pokemon.svg" alt="logo pokémon">&nbsp;!</h1>
+        </header>
+
+        <main>
+            <div id="pokedex">
+                <div id="pokedex-left">
+                    <div id="pokedex-left-header">
+                        <div></div> <!-- header -->
+                        <div></div> <!-- carré -->
+                        <div></div> <!-- skew -->
+                        <div> <!-- gros rond -->
+                            <div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div> 
+                        <div> <!-- lights -->
+                            <div></div> <!-- red -->
+                            <div></div> <!-- green -->
+                            <div></div> <!-- yellow -->
+                        </div>
+                    </div>
+                    <div id="pokedex-left-container">
+                        <div id="pokedex-pokemon-display">
+                            <div> <!-- two red buttons -->
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <div id="pokedex-pokemon-img">
+                                <!-- img js --> <!-- toggle class on img or next div -->
+                                <div id="pokemon-height-weight">
+                                    <!-- pokemon sprite js -->
+                                    <p><span class="strong">Taille&nbsp;:</span><span id="pokemon-height"></span></p>
+                                    <p><span class="strong">Poids&nbsp;:</span><span id="pokemon-weight"></span></p>
+                                </div>
+                                <div id="pokemon-name-and-id">
+                                    <p id="pokemon-name"></p>
+                                    <p id="pokemon-id"></p>
+                                </div>
+                            </div>
+                            <div> <!-- rond et trois lignes -->
+                                <div></div> <!-- rond -->
+                                <div></div> <!-- trois lignes = 1 + before + after -->
+                            </div>
+                        </div>
+                        <div id="pokedex-left-buttons">
+                            <div>
+                                <div id="pokedex-left-decorative-buttons">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                                <label for="pokemon-searchbar" class="hidden">Entrez le nom d'un pokémon&nbsp;:</label>
+                                <input type="text" id="pokemon-searchbar" name="pokemon-searchbar" placeholder="Entrez un pokémon">
+                            </div>
+                            <div id="travel-buttohns"> <!-- display grid -->
+                                <div> <!-- boutons pour passer de l'image du pokemon à la div sprite-taille-poids -->
+                                    <button id="top"></button>
+                                    <button id="bottom"></button>
+                                </div>
+                                <div> <!-- boutons pour passer au pokémon suivant ou précédent -->
+                                    <button id="previous"></button>
+                                    <button id="next"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="pokedex-transition"></div>
+                <div id="pokedex-right">
+
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <small>Pokédex App. @Fahrenheigt & @Lrigami, 2024</small>
+        </footer>
+
+        <script src="script.js"></script>
+    </body>
+</html>
