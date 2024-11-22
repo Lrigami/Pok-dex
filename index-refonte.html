@@ -38,23 +38,25 @@
                     </div>
                     <div id="pokedex-left-container">
                         <div id="pokedex-pokemon-display">
-                            <div> <!-- two red buttons -->
+                            <div id="red-decorative-buttons"> <!-- two red buttons -->
                                 <div></div>
                                 <div></div>
                             </div>
                             <div id="pokedex-pokemon-img">
-                                <!-- img js --> <!-- toggle class on img or next div -->
-                                <div id="pokemon-height-weight">
-                                    <!-- pokemon sprite js -->
-                                    <p><span class="strong">Taille&nbsp;:</span><span id="pokemon-height"></span></p>
-                                    <p><span class="strong">Poids&nbsp;:</span><span id="pokemon-weight"></span></p>
+                                <img id="pokemon-img" src="" alt=""> <!-- toggle class on img or next div -->
+                                <div id="pokemon-height-weight" class="hidden">
+                                    <img id="pokemon-sprite" src="" alt=""> <!-- pokemon sprite js -->
+                                    <div>
+                                      <p><span class="strong">Taille&nbsp;:</span><span id="pokemon-height"></span></p>
+                                    <p><span class="strong">Poids&nbsp;:</span><span id="pokemon-weight"></span></p>  
+                                    </div>
                                 </div>
-                                <div id="pokemon-name-and-id">
+                                <div id="pokemon-name-and-id" class="hidden">
                                     <p id="pokemon-name"></p>
                                     <p id="pokemon-id"></p>
                                 </div>
                             </div>
-                            <div> <!-- rond et trois lignes -->
+                            <div id="decorative-button-and-lines"> <!-- rond et trois lignes -->
                                 <div></div> <!-- rond -->
                                 <div></div> <!-- trois lignes = 1 + before + after -->
                             </div>
@@ -69,7 +71,7 @@
                                 <label for="pokemon-searchbar" class="hidden">Entrez le nom d'un pokémon&nbsp;:</label>
                                 <input type="text" id="pokemon-searchbar" name="pokemon-searchbar" placeholder="Entrez un pokémon">
                             </div>
-                            <div id="travel-buttohns"> <!-- display grid -->
+                            <div id="travel-buttons"> <!-- display grid -->
                                 <div> <!-- boutons pour passer de l'image du pokemon à la div sprite-taille-poids -->
                                     <button id="top"></button>
                                     <button id="bottom"></button>

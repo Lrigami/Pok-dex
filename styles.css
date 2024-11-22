@@ -52,6 +52,10 @@ button {
     cursor: pointer;
 }
 
+/* .hidden {
+    display: none;
+} */
+
 /* header */
 header {
     font-size: 1.2rem;
@@ -93,8 +97,8 @@ main {
 
 /* pokedex left */
 #pokedex-left {
-    min-height: 400px;
-    min-width: 400px;
+    height: 600px;
+    width: 400px;
     background: var(--pokedex-backrgound-two);
     color: var(--text-color);
     border-radius: 5px 0 0 15px;
@@ -113,7 +117,6 @@ main {
     position: absolute;
     top: 0;
     left: 0;
-    border: 1px solid black;
 }
 
 #header-band {
@@ -228,12 +231,161 @@ main {
 
 /* pokedex-left-container */
 #pokedex-left-container {
-    min-width: 95%;
-    min-height: 95%;
-    box-sizing: border-box;
+    width: 95%;
+    height: 95%;
     border: 4px solid var(--pokedex-border);
     border-radius: 5px 0 0 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+/* pokedex-pokemon-display */
+#pokedex-pokemon-display {
+    margin-top: 150px;
+    width: 90%;
+    height: 250px;
+    background-color: var(--button-white);
+    border-radius: 15px 15px 15px 15%;
+    box-shadow: 10px 10px 0px var(--pokedex-border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2px;
+}
+
+#red-decorative-buttons {
+    width: 50px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#red-decorative-buttons div {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--button-grey);
+    background-color: var(--buttton-red);
+}
+
+#pokedex-pokemon-img {
+    width: 95%;
+    height: 75%;
+    background: linear-gradient(140deg, var(--pokedex-img-backrgound) 10%, var(--pokedex-img-background-two) 11%, var(--pokedex-img-background-two) 30%, var(--pokedex-img-backrgound) 31%, var(--pokedex-img-backrgound) 65%, var(--pokedex-img-background-two) 66%, var(--pokedex-img-background-two) 80%, var(--pokedex-img-backrgound) 81%, var(--pokedex-img-backrgound) 100%);
+    border-radius: 5px;
+    box-shadow: inset 0px 10px 0px #29aabb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+#pokemon-img {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#pokemon-height-weight {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px 40px 10px;
+}
+
+#pokemon-sprite {
+    height: 100px;
+    max-width: 100px;
+}
+
+#pokemon-height-weight div {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#pokemon-name-and-id {
+    width: 100%;
+    height: 40px;
+    border: 1px solid black;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    background-color: var(--button-grey);
+    color: var(--stats-text-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+#decorative-button-and-lines {
+    width: 95%;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+
+#decorative-button-and-lines div:first-of-type {
+    width: 25px;
+    height: 25px;
+    background-color: var(--buttton-red);
+    border-radius: 50%;
+    border: 2px solid var(--button-grey);
+}
+
+#decorative-button-and-lines div:last-of-type {
+    width: 50px;
+    height: 3px;
+    border-radius: 2px;
+    background-color: var(--button-grey);
+}
+
+#decorative-button-and-lines div:last-of-type::before {
+    content: "";
+    width: 50px;
+    height: 3px;
+    border-radius: 2px;
+    background-color: var(--button-grey);
+    display: block;
+    position: relative;
+    bottom: 5px;
+}
+
+#decorative-button-and-lines div:last-of-type::after {
+    content: "";
+    width: 50px;
+    height: 3px;
+    border-radius: 2px;
+    background-color: var(--button-grey);
+    display: block;
+    position: relative;
+    top: 2px;
+}
+
+/* pokedex-left-buttons */
+#pokedex-left-buttons {
+    border: 1px solid black;
+    margin-top: 10px;
+    height: 150px;
+}
+
+#pokedex-left-decorative-buttons {
+    
+}
+
 
 /* searchbar */
 #searchbar {
@@ -376,6 +528,8 @@ footer {
     bottom: 0;
     background-color: white;
 }
+
+/* animations */
 
 /* responsive */
 @media screen and (max-width: 1225px) {
