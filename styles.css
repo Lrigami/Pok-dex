@@ -1,8 +1,33 @@
 :root {
-    --pokedex-background: #dd0b30;
-    --pokedex-gradient: linear-gradient(160deg, rgba(221,11,48,1) 0%, rgba(224,28,28,1) 42%, rgba(230,38,38,1) 78%);
-    --pokedex-border: #7f0512;
-    --pokemon-font: "PokemonSolid";
+    /* colors */
+    --pokedex-background: #fe1a55;
+    --pokedex-backrgound-two: #ca215a;
+    --pokedex-border: #481557;
+    --pokedex-highlight: #fc9074;
+    --pokedex-gradient: ;
+
+    --pokedex-img-backrgound: #00d7fc;
+    --pokedex-img-background-two: #00e6fe;
+    --pokedex-img-gradient: ;
+
+    --buttton-red: #fe1a55;
+    --button-blue: #00aaf7;
+    --button-green: #2ff453;
+    --buttton-yellow: #f8ed5f;
+    --button-orange: #fa8e55;
+    --button-black: #0c1a57;
+    --button-white: #f2f4e7;
+    --button-grey: #152a59;
+    --highlights: #fdfbfb;
+    --blue-highlight: #70e0e0;
+
+    --stats-background: #0c1a57;
+    --stats-background-two: #294e61;
+    --stats-gradient: ;
+
+    /* text */
+    --pokemon-name-font: "PokemonSolid";
+    --pokemon-name-spacing: 3px;
     --font: "Moltors";
     --text-color: #222222;
     --stats-background: #222222;
