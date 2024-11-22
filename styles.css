@@ -500,7 +500,7 @@ main {
 /* pokedex right */
 #pokedex-right {
     background-color: var(--pokedex-background);
-    box-shadow: inset 10px 0px 0px var(--pokedex-backrgound-two);
+    box-shadow: 0px 25px 0px var(--pokedex-border), inset 10px 0px 0px var(--pokedex-backrgound-two);
     border-radius: 0 5px 15px 0;
 }
 
