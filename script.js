@@ -106,7 +106,7 @@ function initSearchListener() {
     if (result && resultHW) {
       displayPokemon(result, resultHW);
     } else if (query) {
-      document.getElementById('pokemon-details').innerHTML = '<p>Aucun Pokémon trouvé.</p>';
+      pokemonName.innerText = 'Aucun pokémon';
     }
   });
 
@@ -173,8 +173,8 @@ function displayPokemon(pokemon, pokemonHW) {
   pokemonSprite.setAttribute("src", `${pokemon.sprite}`);
   pokemonSprite.setAttribute("alt", `${pokemon.name}`);
 
-  pokemonHeight.innerText = `${pokemonHW.taille} cm`;
-  pokemonWeight.innerText = `${pokemonHW.poids} kg`;
+  pokemonHeight.innerText = ` ${pokemonHW.taille} cm`;
+  pokemonWeight.innerText = ` ${pokemonHW.poids} kg`;
   pokemonName.innerText = `${pokemon.name}`;
   pokemonId.innerText = `${pokemon.id}`;
 
@@ -187,8 +187,14 @@ function displayPokemon(pokemon, pokemonHW) {
     `<img src="${pokemon.apiTypes[0].image}" alt="${pokemon.apiTypes[0].name}" title="${pokemon.apiTypes[0].name}">
     <span>${pokemon.apiTypes[0].name}</span>`;
 
-  pokemonSecondaryType.innerHTML = 
-    `<img src="${pokemon.apiTypes[1].image}" alt="${pokemon.apiTypes[1].name}" title="${pokemon.apiTypes[1].name}">
-    <span>${pokemon.apiTypes[1].name}</span>`;
+    if (pokemon.apiTypes[1]) {
+      pokemonSecondaryType.classList.remove("hidden");
+      pokemonSecondaryType.innerHTML = 
+        `<img src="${pokemon.apiTypes[1].image}" alt="${pokemon.apiTypes[1].name}" title="${pokemon.apiTypes[1].name}">
+        <span>${pokemon.apiTypes[1].name}</span>`;
+    } else {
+      pokemonSecondaryType.classList.add("hidden");
+    }
+
 
 }
