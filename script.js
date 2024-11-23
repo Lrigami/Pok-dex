@@ -176,7 +176,7 @@ function displayPokemon(pokemon, pokemonHW) {
   pokemonHeight.innerText = ` ${pokemonHW.taille} cm`;
   pokemonWeight.innerText = ` ${pokemonHW.poids} kg`;
   pokemonName.innerText = `${pokemon.name}`;
-  pokemonId.innerText = `${pokemon.id}`;
+  pokemonId.innerText = `n° ${pokemon.id}`;
 
   pokemonStats.innerHTML = `<ul type="none">${stats}</ul>`;
   pokemonStrength.innerHTML = `<ul type="none">${resistances || '<li>Aucune force détectée.</li>'}</ul>`;
