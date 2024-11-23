@@ -602,7 +602,6 @@ main {
     justify-content: space-between;
     gap: 2px;
     overflow: scroll;
-    scroll-margin-top: 15px;
 }
 
 #pokemon-statistics, #pokemon-search-by-id, #filter-results {

@@ -115,30 +115,34 @@ function initSearchListener() {
     if (currentPokemonId === null) return;
 
     if (event.key === 'ArrowRight') {
-      const nextPokemon = pokemons.find(pokemon => pokemon.id === currentPokemonId + 1);
-      if (nextPokemon) {
-        displayPokemon(nextPokemon);
+      const nextPokemon = pokemons.find(pokemon => pokemon.id === currentPokemonId + 1)
+      const nextPokemonHW = pokemonsHW.find(pokemonHW => pokemonHW.id === currentPokemonId + 1);
+      if (nextPokemon && nextPokemonHW) {
+        displayPokemon(nextPokemon, nextPokemonHW);
       }
     } else if (event.key === 'ArrowLeft') {
-      const prevPokemon = pokemons.find(pokemon => pokemon.id === currentPokemonId - 1);
-      if (prevPokemon) {
-        displayPokemon(prevPokemon);
+      const prevPokemon = pokemons.find(pokemon => pokemon.id === currentPokemonId - 1)
+      const prevPokemonHW = pokemonsHW.find(pokemonHW => pokemonHW.id === currentPokemonId - 1);
+      if (prevPokemon && prevPokemonHW) {
+        displayPokemon(prevPokemon, prevPokemonHW);
       }
     }
   });
 
   // Gestion des flèches cliquables (HTML)
   function navigateToNextPokemon() {
-    const nextPokemon = pokemons.find(pokemon => pokemon.id === currentPokemonId + 1);
-    if (nextPokemon) {
-      displayPokemon(nextPokemon);
+    const nextPokemon = pokemons.find(pokemon => pokemon.id === currentPokemonId + 1)
+    const nextPokemonHW = pokemonsHW.find(pokemonHW => pokemonHW.id === currentPokemonId + 1);
+    if (nextPokemon && nextPokemonHW) {
+      displayPokemon(nextPokemon, nextPokemonHW);
     }
   }
 
   function navigateToPreviousPokemon() {
-    const prevPokemon = pokemons.find(pokemon => pokemon.id === currentPokemonId - 1);
-    if (prevPokemon) {
-      displayPokemon(prevPokemon);
+    const prevPokemon = pokemons.find(pokemon => pokemon.id === currentPokemonId - 1)
+    const prevPokemonHW = pokemonsHW.find(pokemonHW => pokemonHW.id === currentPokemonId - 1);
+    if (prevPokemon, prevPokemonHW) {
+      displayPokemon(prevPokemon, prevPokemonHW);
     }
   }
 
