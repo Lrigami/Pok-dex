@@ -602,6 +602,7 @@ main {
     justify-content: space-between;
     gap: 2px;
     overflow: scroll;
+    padding: 10px;
 }
 
 #pokemon-statistics, #pokemon-search-by-id, #filter-results {
@@ -686,6 +687,12 @@ main {
     border-radius: 10px;
     color: var(--text-color);
     font-family: var(--stats-font-family), Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+}
+
+#type-container div img {
+    height: 90%;
 }
 
 #type-container-decorative-buttons {
