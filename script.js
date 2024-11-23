@@ -1,4 +1,5 @@
 let pokemons = []; // Déclare la variable globalement
+let pokemonsHW = []; 
 
 const translations = {
   stats: {
@@ -24,17 +25,43 @@ const translations = {
   }
 };
 
-// Charger le fichier JSON
+// pokemon info 
+const pokemonImage = document.getElementById("pokemon-img");
+const pokemonSprite = document.getElementById("pokemon-sprite");
+const pokemonHeight = document.getElementById("pokemon-height");
+const pokemonWeight = document.getElementById("pokemon-weight");
+const pokemonName = document.getElementById("pokemon-name");
+const pokemonId = document.getElementById("pokemon-id");
+const pokemonStatistics = document.getElementById("pokemon-statistics");
+const pokemonStats = document.getElementById("stats-text");
+const pokemonStrength = document.getElementById("strengths-text");
+const pokemonWeakness = document.getElementById("weaknesses-text");
+const pokemonEvolution = document.getElementById("evolution-text");
+const pokemonMainType = document.getElementById("main-type");
+const pokemonSecondaryType = document.getElementById("secondary-type");
+
+// buttons
+const arrowTop = document.getElementById("top");
+const arrowDown = document.getElementById("bottom");
+const arrowLeft = document.getElementById("previous");
+const arrowRight = document.getElementById("next");
+
+// search
+const searchBar = document.getElementById("pokemon-searchbar");
+const enteredId = document.getElementById("entered-id");
+const filterResults = document.getElementById("filter-results");
+
+// Charger le fichier JSON pour les données sur les pokémons
 fetch('./data/pokebuildAPI.json')
   .then(response => {
     if (!response.ok) {
-      throw new Error('Erreur lors du chargement des données');
+      throw new Error('Erreur lors du chargement des données.');
     }
     return response.json();
   })
   .then(data => {
     pokemons = data; // Remplit la variable avec les données
-    console.log('Données chargées:', pokemons);
+    console.log('Données chargées :', pokemons);
 
     // Initialise l'écouteur de la barre de recherche
     initSearchListener();
@@ -43,11 +70,28 @@ fetch('./data/pokebuildAPI.json')
     console.error('Erreur :', error);
   });
 
+// Charger le fichier JSON pour la taille et poids des pokémons
+fetch('./data/height_weight.json')
+  .then(response => {
+    if(!response.ok) {
+      throw new Error('Erreur lors du chargement des données.');
+    }
+    return response.json();
+  })
+  .then(data => {
+    pokemonsHW = data; // Remplit la variable avec les données 
+    console.log('Données chargées :', pokemonsHW);
+  })
+  .catch(error => {
+    console.log('Erreur :', error);
+  })
+
 let currentPokemonId = null; // Suivi de l'ID du Pokémon actuellement affiché
 
+// Fonction de recherche de pokémons par ID ou par Nom
 function initSearchListener() {
   // Barre de recherche
-  document.getElementById('pokemon-search').addEventListener('input', (event) => {
+  searchBar.addEventListener('input', (event) => {
     const query = event.target.value.trim().toLowerCase();
 
     // Recherche par ID ou nom
@@ -55,8 +99,12 @@ function initSearchListener() {
       pokemon.id === parseInt(query) || pokemon.name.toLowerCase() === query
     );
 
-    if (result) {
-      displayPokemon(result);
+    const resultHW = pokemonsHW.find(pokemonHW => 
+      pokemonHW.id === parseInt(query) || pokemonHW.nom.toLowerCase() === query
+    );
+
+    if (result && resultHW) {
+      displayPokemon(result, resultHW);
     } else if (query) {
       document.getElementById('pokemon-details').innerHTML = '<p>Aucun Pokémon trouvé.</p>';
     }
@@ -94,13 +142,12 @@ function initSearchListener() {
     }
   }
 
-  document.getElementById('next').addEventListener('click', navigateToNextPokemon);
-  document.getElementById('previous').addEventListener('click', navigateToPreviousPokemon);
+  arrowRight.addEventListener('click', navigateToNextPokemon);
+  arrowLeft.addEventListener('click', navigateToPreviousPokemon);
 }
 
-function displayPokemon(pokemon) {
+function displayPokemon(pokemon, pokemonHW) {
   currentPokemonId = pokemon.id; // Met à jour l'ID actuel
-  const detailsContainer = document.getElementById('pokemon-details');
 
   const resistances = pokemon.apiResistances
     .filter(res => res.damage_relation === 'resistant' || res.damage_relation === 'twice_resistant')
@@ -117,49 +164,27 @@ function displayPokemon(pokemon) {
   const stats = Object.entries(pokemon.stats)
     .map(([stat, value]) => `<li>${translations.stats[stat] || stat}: ${value}</li>`).join('');
 
-  detailsContainer.innerHTML = `
-    <div id="pokemon-id-name">
-    <p class="pokemon-id">${pokemon.id}</p>
-    <h2 class="pokemon-name">${pokemon.name}</h2></div>
-    <div id="pkm-img"><img src="${pokemon.image}" alt="${pokemon.name}"></div>
-    <p id="type-p"><strong>${translations.misc.types} :</strong></p>
-    <div id="type-container">
-      ${pokemon.apiTypes.map(type => `
-        <div class="type">
-          <img src="${type.image}" alt="${type.name}" title="${type.name}">
-          <span>${type.name}</span>
-        </div>
-      `).join('')}
-    </div>
-    
-    <div id="pkm-stats">
-    <div id="stats">
-    <p><strong>${translations.misc.stats} :</strong></p>
-    <ul type="none">
-      ${stats}
-    </ul>
-    </div>
+  pokemonImage.setAttribute("src", `${pokemon.image}`);
+  pokemonImage.setAttribute("alt", `${pokemon.name}`);
+  pokemonSprite.setAttribute("src", `${pokemon.sprite}`);
+  pokemonSprite.setAttribute("alt", `${pokemon.name}`);
 
-    <div id="strengths">
-    <p><strong>${translations.misc.strengths} :</strong></p>
-    <ul type="none">
-      ${resistances || '<li>Aucune force détectée.</li>'}
-    </ul>
-    </div>
+  pokemonHeight.innerText = `${pokemonHW.taille} cm`;
+  pokemonWeight.innerText = `${pokemonHW.poids} kg`;
+  pokemonName.innerText = `${pokemon.name}`;
+  pokemonId.innerText = `${pokemon.id}`;
 
-    <div id="weaknesses">
-    <p><strong>${translations.misc.weaknesses} :</strong></p>
-    <ul type="none">
-      ${vulnerabilities || '<li>Aucune faiblesse détectée.</li>'}
-    </ul>
-    </div>
+  pokemonStats.innerHTML = `<ul type="none">${stats}</ul>`;
+  pokemonStrength.innerHTML = `<ul type="none">${resistances || '<li>Aucune force détectée.</li>'}</ul>`;
+  pokemonWeakness.innerHTML = `<ul type="none">${vulnerabilities || '<li>Aucune faiblesse détectée.</li>'}</ul>`;
+  pokemonEvolution.innerHTML = `<ul type="none">${evolutions}</ul>`;
 
-    <div id="evolutions">
-    <p><strong>${translations.misc.evolutions} :</strong></p>
-    <ul type="none">
-      ${evolutions}
-    </ul>
-    </div>
-    </div>
-  `;
+  pokemonMainType.innerHTML = 
+    `<img src="${pokemon.apiTypes[0].image}" alt="${pokemon.apiTypes[0].name}" title="${pokemon.apiTypes[0].name}">
+    <span>${pokemon.apiTypes[0].name}</span>`;
+
+  pokemonSecondaryType.innerHTML = 
+    `<img src="${pokemon.apiTypes[1].image}" alt="${pokemon.apiTypes[1].name}" title="${pokemon.apiTypes[1].name}">
+    <span>${pokemon.apiTypes[1].name}</span>`;
+
 }

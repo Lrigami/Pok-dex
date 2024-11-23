@@ -47,14 +47,14 @@
                             </div>
                             <div id="pokedex-pokemon-img">
                                 <img id="pokemon-img" src="" alt=""> <!-- toggle class on img or next div -->
-                                <div id="pokemon-height-weight" class="hidden">
+                                <div id="pokemon-height-weight" class="">
                                     <img id="pokemon-sprite" src="" alt=""> <!-- pokemon sprite js -->
                                     <div>
                                       <p><span class="strong">Taille&nbsp;:</span><span id="pokemon-height"></span></p>
                                     <p><span class="strong">Poids&nbsp;:</span><span id="pokemon-weight"></span></p>  
                                     </div>
                                 </div>
-                                <div id="pokemon-name-and-id" class="hidden">
+                                <div id="pokemon-name-and-id" class="">
                                     <p id="pokemon-name"></p>
                                     <p id="pokemon-id"></p>
                                 </div>
@@ -74,7 +74,7 @@
                                 <label for="pokemon-searchbar" class="hidden">Entrez le nom d'un pokémon&nbsp;:</label>
                                 <input type="text" id="pokemon-searchbar" name="pokemon-searchbar" placeholder="Entrez un pokémon">
                             </div>
-                            <div id="travel-buttons"> <!-- display grid -->
+                            <div id="travel-buttons">
                                 <div id="top-bottom"> <!-- boutons pour passer de l'image du pokemon à la div sprite-taille-poids -->
                                     <button id="top"><span class="material-icons">arrow_drop_up</span></button>
                                     <button id="bottom"><span class="material-icons">arrow_drop_down</span></button>
@@ -100,16 +100,20 @@
                         <div id="pokemon-screen">
                             <div id="pokemon-statistics" class="">
                                 <div id="pkm-stats">
-                                    <p><span class="strong">Statistiques&nbsp;:</span><span id="stats-text"></span></p>
+                                    <p><span class="strong">Statistiques&nbsp;:&nbsp;</span></p>
+                                    <p id="stats-text"></p>
                                 </div>
                                 <div id="pkm-strengths">
-                                    <p><span class="strong">Forces&nbsp;:</span><span id="strengths-text"></span></p>
+                                    <p><span class="strong">Résistances&nbsp;:&nbsp;</span></p>
+                                    <p id="strengths-text"></p>
                                 </div>
                                 <div id="pkm-weaknesses">
-                                    <p><span class="strong">Faiblesses&nbsp;:</span><span id="weaknesses-text"></span></p>
+                                    <p><span class="strong">Faiblesses&nbsp;:&nbsp;</span></p>
+                                    <p id="weaknesses-text"></p>
                                 </div>
                                 <div id="pkm-evolution">
-                                    <p><span class="strong">Evolution&nbsp;:</span><span id="evolution-text"></span></p>
+                                    <p><span class="strong">Evolution&nbsp;:&nbsp;</span></p>
+                                    <p id="evolution-text"></p>
                                 </div>
                             </div>
                             <div id="pokemon-search-by-id" class="hidden">
