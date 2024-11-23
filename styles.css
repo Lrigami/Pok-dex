@@ -493,8 +493,27 @@ main {
 
 /* pokedex transition */
 #pokedex-transition {
-    width: 30px;
-    height: 600px;
+    width: 40px;
+    height: 700px;
+    background: linear-gradient(to right, var(--pokedex-background) 20%, var(--pokedex-highlight) 21%, var(--pokedex-highlight) 40%, var(--pokedex-background) 41%, var(--pokedex-background) 70%, var(--pokedex-border) 71%, var(--pokedex-border) 100%);
+    position: relative;
+}
+
+#pokedex-transition div {
+    border-radius: 50%;
+    position: absolute;
+    width: 100%;
+    height: 25px;
+}
+
+#pokedex-transition div:first-of-type {
+    top: -10px;
+    background: linear-gradient(to right, var(--pokedex-background) 20%, var(--pokedex-highlight) 21%, var(--pokedex-highlight) 40%, var(--pokedex-background) 41%, var(--pokedex-background) 70%, var(--pokedex-border) 71%, var(--pokedex-border) 100%);
+}
+
+#pokedex-transition div:last-of-type {
+    bottom: -10px;
+    background-color: var(--pokedex-border);
 }
 
 /* pokedex right */
