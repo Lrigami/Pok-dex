@@ -772,5 +772,73 @@ footer {
 
 /* responsive */
 @media screen and (max-width: 850px) {
-    
+    header {
+        height: auto;
+        margin-bottom: 15px;
+    }
+    header h1 {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    body {
+        max-height: 1600px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        overflow: scroll;
+    }
+
+    #pokedex {
+        flex-direction: column;
+        height: auto;
+    }
+
+    #pokedex-transition {
+        transform-origin: top left;
+        height: 400px;
+        rotate: 90deg;
+        top: -10px;
+        left: 400px;
+        position: relative;
+    }
+
+    #pokedex-transition div {
+        height: 10px;
+    }
+
+    #pokedex-transition div:first-of-type {
+        top: -5px;
+        position: absolute;
+    }
+
+    #pokedex-transition div:last-of-type {
+        bottom: -5px;
+        position: absolute;
+    }
+
+    #pokedex-right {
+        top: -375px;
+        overflow: hidden;
+        box-shadow: inset 10px 0px 0px var(--pokedex-backrgound-two);
+        border-radius: 0;
+    }
+
+    #pokemon-screen {
+        margin-top: 10px;
+    }
+
+    #pokedex-right-header {
+        top: 545px;
+        rotate: 180deg;
+    }
+
+    #pokedex-right-container {
+        border-radius: 15px 0 0 5px ;
+    }
+
+    footer {
+        z-index: 100;
+    }
 }
