@@ -624,6 +624,17 @@ main {
     gap: 2px;
     overflow: scroll;
     padding: 10px;
+    position: relative;
+}
+
+#margin-top{
+    height: 10px;
+    background-color: black;
+    width: 76%;
+    position: absolute;
+    top: 172px;
+    left: 45px;
+    z-index: 3;
 }
 
 #pokemon-statistics, #pokemon-search-by-id, #filter-results {
@@ -856,6 +867,10 @@ footer {
 
     #pokedex-right-container {
         border-radius: 15px 0 0 5px ;
+    }
+
+    #margin-top {
+        top: 32px;
     }
 
     footer {
