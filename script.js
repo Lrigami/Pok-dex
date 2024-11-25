@@ -231,9 +231,13 @@ function displayPokemon(pokemon, pokemonHW) {
 arrowDown.onclick = () => {
   const sliderHeight = document.getElementById("pokedex-pokemon-img").offsetHeight;
   document.getElementById("pokedex-pokemon-img").scrollTop += sliderHeight;
+  arrowDown.classList.toggle("avoid-clicks");
+  arrowUp.classList.toggle("avoid-clicks");
 }
 
 arrowUp.onclick = () => {
   const sliderHeight = document.getElementById("pokedex-pokemon-img").offsetHeight;
   document.getElementById("pokedex-pokemon-img").scrollTop -= sliderHeight;
+  arrowDown.classList.toggle("avoid-clicks");
+  arrowUp.classList.toggle("avoid-clicks");
 }

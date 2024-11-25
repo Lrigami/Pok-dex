@@ -51,6 +51,10 @@ button {
     cursor: pointer;
 }
 
+.avoid-clicks {
+    pointer-events: none;
+}
+
 .strong {
     font-weight: bolder;
 }
@@ -299,7 +303,6 @@ main {
     display: flex;
     justify-content: space-between; 
     align-items: center;
-    padding: 10px 10px 40px 10px;
 }
 
 #pokemon-sprite {
