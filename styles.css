@@ -739,6 +739,10 @@ main {
     background-color: var(--buttton-yellow);
 }
 
+#filter-by {
+    cursor: default;
+}
+
 #filter-buttons {
     height: 60px;
     margin-top: 10px;
@@ -769,6 +773,19 @@ footer {
 }
 
 /* animations */
+@keyframes light {
+    0%, 100% {
+        filter: brightness(100%);
+    }
+
+    20%, 80% {
+        filter: brightness(150%);
+    }
+
+    50% {
+        filter: brightness(190%);
+    }
+}
 
 /* responsive */
 @media screen and (max-width: 850px) {

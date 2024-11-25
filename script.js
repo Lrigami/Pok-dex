@@ -41,7 +41,7 @@ const pokemonMainType = document.getElementById("main-type");
 const pokemonSecondaryType = document.getElementById("secondary-type");
 
 // buttons
-const arrowTop = document.getElementById("top");
+const arrowUp = document.getElementById("top");
 const arrowDown = document.getElementById("bottom");
 const arrowLeft = document.getElementById("previous");
 const arrowRight = document.getElementById("next");
@@ -50,6 +50,11 @@ const arrowRight = document.getElementById("next");
 const searchBar = document.getElementById("pokemon-searchbar");
 const enteredId = document.getElementById("entered-id");
 const filterResults = document.getElementById("filter-results");
+
+// lights
+const redLight = document.getElementById("red-light");
+const yellowLight = document.getElementById("yellow-light");
+const greenLight = document.getElementById("green-light")
 
 // Charger le fichier JSON pour les données sur les pokémons
 fetch('./data/pokebuildAPI.json')
@@ -104,6 +109,8 @@ function initSearchListener() {
     );
 
     if (result && resultHW) {
+      turnOnLights();
+      setTimeout(turnOffLights, 1600);
       displayPokemon(result, resultHW);
     } else if (query) {
       pokemonName.innerText = 'Aucun pokémon';
@@ -118,12 +125,16 @@ function initSearchListener() {
       const nextPokemon = pokemons.find(pokemon => pokemon.id === currentPokemonId + 1)
       const nextPokemonHW = pokemonsHW.find(pokemonHW => pokemonHW.id === currentPokemonId + 1);
       if (nextPokemon && nextPokemonHW) {
+        turnOnLights();
+        setTimeout(turnOffLights, 1600);
         displayPokemon(nextPokemon, nextPokemonHW);
       }
     } else if (event.key === 'ArrowLeft') {
       const prevPokemon = pokemons.find(pokemon => pokemon.id === currentPokemonId - 1)
       const prevPokemonHW = pokemonsHW.find(pokemonHW => pokemonHW.id === currentPokemonId - 1);
       if (prevPokemon && prevPokemonHW) {
+        turnOnLights();
+        setTimeout(turnOffLights, 1600);
         displayPokemon(prevPokemon, prevPokemonHW);
       }
     }
@@ -141,13 +152,33 @@ function initSearchListener() {
   function navigateToPreviousPokemon() {
     const prevPokemon = pokemons.find(pokemon => pokemon.id === currentPokemonId - 1)
     const prevPokemonHW = pokemonsHW.find(pokemonHW => pokemonHW.id === currentPokemonId - 1);
-    if (prevPokemon, prevPokemonHW) {
+    if (prevPokemon && prevPokemonHW) {
       displayPokemon(prevPokemon, prevPokemonHW);
     }
   }
 
-  arrowRight.addEventListener('click', navigateToNextPokemon);
-  arrowLeft.addEventListener('click', navigateToPreviousPokemon);
+  arrowRight.addEventListener('click', () => {
+    navigateToNextPokemon();
+    turnOnLights();
+    setTimeout(turnOffLights, 500);
+  });
+  arrowLeft.addEventListener('click', () => {
+    navigateToPreviousPokemon();
+    turnOnLights();
+    setTimeout(turnOffLights, 500);
+  });
+}
+
+function turnOnLights() {
+  redLight.style.animation = "light 0.3s linear";
+  yellowLight.style.animation = "light 0.3s linear 0.1s";
+  greenLight.style.animation = "light 0.3s linear 0.2s";
+}
+
+function turnOffLights() {
+  redLight.style.animation = "";
+  yellowLight.style.animation = "";
+  greenLight.style.animation = "";
 }
 
 function displayPokemon(pokemon, pokemonHW) {
@@ -202,7 +233,7 @@ arrowDown.onclick = () => {
   document.getElementById("pokedex-pokemon-img").scrollTop += sliderHeight;
 }
 
-arrowTop.onclick = () => {
+arrowUp.onclick = () => {
   const sliderHeight = document.getElementById("pokedex-pokemon-img").offsetHeight;
   document.getElementById("pokedex-pokemon-img").scrollTop -= sliderHeight;
 }
