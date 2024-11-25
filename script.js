@@ -195,6 +195,14 @@ function displayPokemon(pokemon, pokemonHW) {
     } else {
       pokemonSecondaryType.classList.add("hidden");
     }
+}
 
+arrowDown.onclick = () => {
+  const sliderHeight = document.getElementById("pokedex-pokemon-img").offsetHeight;
+  document.getElementById("pokedex-pokemon-img").scrollTop += sliderHeight;
+}
 
+arrowTop.onclick = () => {
+  const sliderHeight = document.getElementById("pokedex-pokemon-img").offsetHeight;
+  document.getElementById("pokedex-pokemon-img").scrollTop -= sliderHeight;
 }
