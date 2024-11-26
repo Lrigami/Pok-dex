@@ -748,7 +748,7 @@ main {
     margin-right: 10px;
 }
 
-#type-container-decorative-buttons div:not(:last-of-type) {
+#type-container-decorative-buttons div {
     height: 5px;
     width: 30px;
     background-color: var(--button-black);
@@ -756,13 +756,16 @@ main {
     margin: 5px 5px 0 5px;
 }
 
-#type-container-decorative-buttons div:last-of-type {
+#type-container-decorative-buttons button {
     height: 30px;
     width: 30px;
     border-radius: 50%;
     margin: 5px;
     border: 2px solid var(--button-grey);
     background-color: var(--buttton-yellow);
+    color: var(--buttton-red);
+    font-weight: 600;
+    font-size: 1.2rem;
 }
 
 #filter-by {

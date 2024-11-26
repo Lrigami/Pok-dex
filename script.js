@@ -52,6 +52,7 @@ const numberButtons = document.querySelectorAll("#number-buttons button");
 // search
 const searchBar = document.getElementById("pokemon-searchbar");
 const filterResults = document.getElementById("filter-results");
+const deleteButton = document.getElementById("delete-input");
 
 // lights
 const redLight = document.getElementById("red-light");
@@ -285,4 +286,10 @@ numberButtons.forEach((button) => {
     const event = new Event('input', { bubbles: true, cancelable: true });
     searchBar.dispatchEvent(event);
   })
+});
+
+deleteButton.addEventListener("click", () => {
+  searchBar.value = "";
+  searchBar.style.backgroundColor = "";
+  clearPokemonDisplay();
 })
