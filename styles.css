@@ -316,11 +316,11 @@ main {
 }
 
 #pokemon-name-and-id {
-    width: 100%;
+    width: 95%;
     position: absolute;
     bottom: 50px;
-    left: 0;
     background-color: var(--button-grey);
+    opacity: 0.85;
     color: var(--stats-text-color);
     display: flex;
     justify-content: space-between;
