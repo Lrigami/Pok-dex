@@ -56,6 +56,26 @@ const redLight = document.getElementById("red-light");
 const yellowLight = document.getElementById("yellow-light");
 const greenLight = document.getElementById("green-light")
 
+// Clear pokemon display
+function clearPokemonDisplay() {
+  currentPokemonId = null;
+
+  pokemonImage.setAttribute("src", "");
+  pokemonImage.setAttribute("alt", "");
+  pokemonSprite.setAttribute("src", "");
+  pokemonSprite.setAttribute("alt", "");
+  pokemonHeight.innerText = '';
+  pokemonWeight.innerText = '';
+  pokemonName.innerText = '';
+  pokemonId.innerText = '';
+  pokemonStats.innerHTML = '';
+  pokemonStrength.innerHTML = '';
+  pokemonWeakness.innerHTML = '';
+  pokemonEvolution.innerHTML = '';
+  pokemonMainType.innerHTML = '';
+  pokemonSecondaryType.classList.add("hidden"); 
+}
+
 // Charger le fichier JSON pour les données sur les pokémons
 fetch('./data/pokebuildAPI.json')
   .then(response => {
@@ -108,12 +128,22 @@ function initSearchListener() {
       pokemonHW.id === parseInt(query) || pokemonHW.nom.toLowerCase() === query
     );
 
+    if (!query) {
+      clearPokemonDisplay();
+      searchBar.style.backgroundColor = '';
+      pokemonName.innerText = '';
+      return;
+    }
+
     if (result && resultHW) {
       turnOnLights();
       setTimeout(turnOffLights, 1600);
       displayPokemon(result, resultHW);
+      searchBar.style.backgroundColor = '#64B5F6';
     } else if (query) {
-      pokemonName.innerText = 'Aucun pokémon';
+      clearPokemonDisplay();
+      searchBar.style.backgroundColor = 'red';
+      pokemonName.innerText = 'Aucun pokémon trouvé.';
     }
   });
 

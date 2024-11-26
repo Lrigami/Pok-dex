@@ -435,6 +435,8 @@ main {
     border: none;
     border-radius: 5px;
     padding-left: 5px;
+    font-family: Moltors, Arial, Helvetica, sans-serif;
+    font-size: 12px;
 }
 
 #pokemon-searchbar:active, #pokemon-searchbar:focus, #pokemon-searchbar:focus-visible {
