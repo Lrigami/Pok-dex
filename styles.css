@@ -797,6 +797,7 @@ footer {
     position: fixed;
     bottom: 0;
     background-color: white;
+    z-index: 3;
 }
 
 /* animations */
@@ -815,11 +816,12 @@ footer {
 }
 
 /* responsive */
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 850px) {        
     header {
         height: auto;
         margin-bottom: 15px;
     }
+
     header h1 {
         flex-direction: column;
         text-align: center;
@@ -832,6 +834,7 @@ footer {
         align-items: center;
         justify-content: flex-start;
         overflow: scroll;
+        overflow-x: hidden;
     }
 
     #pokedex {
@@ -884,9 +887,5 @@ footer {
 
     #margin-top {
         top: 32px;
-    }
-
-    footer {
-        z-index: 100;
     }
 }
