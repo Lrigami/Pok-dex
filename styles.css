@@ -45,6 +45,7 @@ body {
     align-items: center;
     overflow-x: hidden;
     font-family: var(--font), Arial, Helvetica, sans-serif;
+    margin-bottom: 30px;
 }
 
 button {
@@ -622,9 +623,9 @@ main {
     align-items: center;
     justify-content: space-between;
     gap: 2px;
-    overflow: scroll;
     padding: 10px;
     position: relative;
+    overflow-y: scroll;
 }
 
 #margin-top{
@@ -632,7 +633,7 @@ main {
     background-color: black;
     width: 76%;
     position: absolute;
-    top: 172px;
+    top: 171px;
     left: 45px;
     z-index: 3;
 }
