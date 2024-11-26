@@ -166,7 +166,17 @@ function initSearchListener() {
         turnOnLights();
         setTimeout(turnOffLights, 500);
         displayPokemon(prevPokemon, prevPokemonHW);
-      }
+      } 
+    } else if (event.key === 'ArrowUp') {
+      const sliderHeight = document.getElementById("pokedex-pokemon-img").offsetHeight;
+      document.getElementById("pokedex-pokemon-img").scrollTop -= sliderHeight;
+      arrowDown.classList.toggle("avoid-clicks");
+      arrowUp.classList.toggle("avoid-clicks"); 
+    } else if (event.key === 'ArrowDown') {
+      const sliderHeight = document.getElementById("pokedex-pokemon-img").offsetHeight;
+      document.getElementById("pokedex-pokemon-img").scrollTop += sliderHeight;
+      arrowDown.classList.toggle("avoid-clicks");
+      arrowUp.classList.toggle("avoid-clicks");
     }
   });
 
