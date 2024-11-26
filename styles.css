@@ -649,16 +649,6 @@ main {
     background: var(--stats-background);
 }
 
-#margin-top{
-    height: 10px;
-    background-color: black;
-    width: 76%;
-    position: absolute;
-    top: 171px;
-    left: 45px;
-    z-index: 3;
-}
-
 #pokemon-statistics, #pokemon-search-by-id, #filter-results {
     width: 100%;
     height: auto;
