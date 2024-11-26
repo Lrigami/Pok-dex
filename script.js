@@ -110,7 +110,7 @@ function initSearchListener() {
 
     if (result && resultHW) {
       turnOnLights();
-      setTimeout(turnOffLights, 1600);
+      setTimeout(turnOffLights, 500);
       displayPokemon(result, resultHW);
     } else if (query) {
       pokemonName.innerText = 'Aucun pokémon';
@@ -126,7 +126,7 @@ function initSearchListener() {
       const nextPokemonHW = pokemonsHW.find(pokemonHW => pokemonHW.id === currentPokemonId + 1);
       if (nextPokemon && nextPokemonHW) {
         turnOnLights();
-        setTimeout(turnOffLights, 1600);
+        setTimeout(turnOffLights, 500);
         displayPokemon(nextPokemon, nextPokemonHW);
       }
     } else if (event.key === 'ArrowLeft') {
@@ -134,7 +134,7 @@ function initSearchListener() {
       const prevPokemonHW = pokemonsHW.find(pokemonHW => pokemonHW.id === currentPokemonId - 1);
       if (prevPokemon && prevPokemonHW) {
         turnOnLights();
-        setTimeout(turnOffLights, 1600);
+        setTimeout(turnOffLights, 500);
         displayPokemon(prevPokemon, prevPokemonHW);
       }
     }
