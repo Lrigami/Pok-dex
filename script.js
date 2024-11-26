@@ -46,9 +46,11 @@ const arrowDown = document.getElementById("bottom");
 const arrowLeft = document.getElementById("previous");
 const arrowRight = document.getElementById("next");
 
+// number buttons
+const numberButtons = document.querySelectorAll("#number-buttons button");
+
 // search
 const searchBar = document.getElementById("pokemon-searchbar");
-const enteredId = document.getElementById("entered-id");
 const filterResults = document.getElementById("filter-results");
 
 // lights
@@ -115,6 +117,7 @@ let currentPokemonId = null; // Suivi de l'ID du Pokémon actuellement affiché
 
 // Fonction de recherche de pokémons par ID ou par Nom
 function initSearchListener() {
+
   // Barre de recherche
   searchBar.addEventListener('input', (event) => {
     const query = event.target.value.trim().toLowerCase();
@@ -274,3 +277,12 @@ arrowUp.onclick = () => {
   const sliderHeight = document.getElementById("pokedex-pokemon-img").offsetHeight;
   document.getElementById("pokedex-pokemon-img").scrollTop -= sliderHeight;
 }
+
+numberButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    button.value = button.id.replace("button", "");
+    searchBar.value += button.value;
+    const event = new Event('input', { bubbles: true, cancelable: true });
+    searchBar.dispatchEvent(event);
+  })
+})
