@@ -52,10 +52,6 @@ button {
     cursor: pointer;
 }
 
-.avoid-clicks {
-    pointer-events: none;
-}
-
 .strong {
     font-weight: bolder;
 }
@@ -261,6 +257,7 @@ main {
     align-items: center;
     justify-content: space-between;
     gap: 2px;
+    position: relative;
 }
 
 #red-decorative-buttons {
@@ -320,8 +317,8 @@ main {
 
 #pokemon-name-and-id {
     width: 100%;
-    position: sticky;
-    bottom: 10px;
+    position: absolute;
+    bottom: 50px;
     left: 0;
     background-color: var(--button-grey);
     color: var(--stats-text-color);
@@ -825,7 +822,8 @@ footer {
     }
 
     header h1 {
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
         text-align: center;
     }
 

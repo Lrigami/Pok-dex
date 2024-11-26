@@ -167,6 +167,12 @@ function initSearchListener() {
         setTimeout(turnOffLights, 500);
         displayPokemon(prevPokemon, prevPokemonHW);
       }
+    } else if (event.key === 'ArrowDown') {
+      const sliderHeight = document.getElementById("pokedex-pokemon-img").offsetHeight;
+      document.getElementById("pokedex-pokemon-img").scrollTop += sliderHeight;
+    } else if (event.key === 'ArrowUp') {
+      const sliderHeight = document.getElementById("pokedex-pokemon-img").offsetHeight;
+      document.getElementById("pokedex-pokemon-img").scrollTop -= sliderHeight;
     }
   });
 
@@ -192,6 +198,7 @@ function initSearchListener() {
     turnOnLights();
     setTimeout(turnOffLights, 500);
   });
+  
   arrowLeft.addEventListener('click', () => {
     navigateToPreviousPokemon();
     turnOnLights();
@@ -261,13 +268,9 @@ function displayPokemon(pokemon, pokemonHW) {
 arrowDown.onclick = () => {
   const sliderHeight = document.getElementById("pokedex-pokemon-img").offsetHeight;
   document.getElementById("pokedex-pokemon-img").scrollTop += sliderHeight;
-  arrowDown.classList.toggle("avoid-clicks");
-  arrowUp.classList.toggle("avoid-clicks");
 }
 
 arrowUp.onclick = () => {
   const sliderHeight = document.getElementById("pokedex-pokemon-img").offsetHeight;
   document.getElementById("pokedex-pokemon-img").scrollTop -= sliderHeight;
-  arrowDown.classList.toggle("avoid-clicks");
-  arrowUp.classList.toggle("avoid-clicks");
 }
