@@ -49,6 +49,7 @@ const slideToRight = document.getElementById("slider-right");
 const slideToLeft = document.getElementById("slider-left");
 let sortIdButton;
 let sortNameButton;
+let sortStatButton;
 
 // number buttons
 const numberButtons = document.querySelectorAll("#number-buttons button");
@@ -58,11 +59,7 @@ const searchBar = document.getElementById("pokemon-searchbar");
 const filterResults = document.getElementById("filter-results");
 const deleteButton = document.getElementById("delete-input");
 const filterType = document.getElementById("filter-type");
-const filterAttack = document.getElementById("filter-attack");
-const filterDefense = document.getElementById("filter-defense");
-const filterAttackSpe = document.getElementById("filter-attackspe");
-const filterDefenseSpe = document.getElementById("filter-defensespe");
-const filterSpeed = document.getElementById("filter-speed");
+const filterStats = ["attack", "defense", "special_attack", "special_defense", "speed"];
 
 // lights
 const redLight = document.getElementById("red-light");
@@ -316,8 +313,11 @@ deleteButton.addEventListener("click", () => {
   clearPokemonDisplay();
 })
 
+// Filter pokemons functions
+// types array
 const types = ["Acier", "Combat", "Dragon", "Eau", "\u00c9lectrik", "F\u00e9e", "Feu", "Glace", "Insecte", "Normal", "Plante", "Poison", "Psy", "Roche", "Sol", "Spectre", "T\u00e9n\u00e8bres", "Vol"];
 
+// filter slider buttons
 function displayTypesFilters() {
   filterResults.classList.remove("hidden");
   pokemonStatistics.classList.add("hidden");
@@ -334,9 +334,11 @@ function displayTypesFilters() {
   filterResults.appendChild(listOfTypes);
 }
 
-let listOfFilteredPkmArray = [];
+let listOfFilteredPkmArray;
 
+// filter pkm by types
 function filterByType(btn) {
+  listOfFilteredPkmArray = [];
   filterResults.innerHTML = `<p id="filter-results-header"><span id="pokemon-num">N°</span><button id="sort-id-btn"><span class="material-icons">expand_all</span></button><span>Pokémon</span><button id="sort-name-btn"><span class="material-icons">expand_all</span></button></p>`;
 
   pokemons.forEach((pokemon) => {
@@ -349,13 +351,14 @@ function filterByType(btn) {
     }
   })
 
-  displayFilter();
+  displayTypeFilter();
   return listOfFilteredPkmArray;
 }
 
-function displayFilter() {
+function displayTypeFilter() {
   let listOfFilteredPkm = "";
   listOfFilteredPkm = document.createElement("ul");
+
   listOfFilteredPkmArray.forEach((pokemon) => {
     let filteredPokemon = document.createElement("li");
     filteredPokemon.classList.add("filtered-pkm");
@@ -379,6 +382,38 @@ function displayFilter() {
   filterResults.appendChild(listOfFilteredPkm);
 }
 
+function displayStatFilter(stat) {
+  let listOfFilteredPkm = "";
+  listOfFilteredPkm = document.createElement("ul");
+  listOfFilteredPkm.setAttribute("id", "filtered-pkm-list");
+
+  listOfFilteredPkmArray.forEach((pokemon) => {
+    let filteredPokemon = document.createElement("li");
+    filteredPokemon.classList.add("filtered-pkm");
+    let filteredPokemonBtn = document.createElement("button");
+    let filteredPokemonSprite = document.createElement("img");
+    filteredPokemonSprite.src = pokemon.sprite;
+    let filteredPokemonId = document.createElement("span");
+    filteredPokemonId.innerText = `${pokemon.id}`;
+    let filteredPokemonName = document.createElement("span");
+    filteredPokemonName.innerText = pokemon.name;
+    let filteredPokemonStat = document.createElement("span");
+    filteredPokemonStat.innerText = `${pokemon.stat_name}`;
+
+    filteredPokemonBtn.appendChild(filteredPokemonSprite);
+    filteredPokemonBtn.appendChild(filteredPokemonId);
+    filteredPokemonBtn.appendChild(filteredPokemonName);
+    filteredPokemonBtn.appendChild(filteredPokemonStat);
+
+    filteredPokemon.appendChild(filteredPokemonBtn);
+
+    listOfFilteredPkm.appendChild(filteredPokemon);
+  });
+
+  filterResults.appendChild(listOfFilteredPkm);
+}
+
+// sort pkm by name
 function sortByName() {
   listOfFilteredPkmArray.sort(function(a, b) {
   let x = a.name.toLowerCase();
@@ -388,7 +423,7 @@ function sortByName() {
   return 0;});
   console.log(listOfFilteredPkmArray);
   filterResults.removeChild(filterResults.lastChild);
-  displayFilter();
+  displayTypeFilter();
 }
 
 function sortByNameReverse() {
@@ -400,27 +435,44 @@ function sortByNameReverse() {
   return 0;});
   console.log(listOfFilteredPkmArray);
   filterResults.removeChild(filterResults.lastChild);
-  displayFilter();
+  displayTypeFilter();
 }
 
+// sort pkm by id
 function sortByIncreasingId() {
   listOfFilteredPkmArray.sort(function(a, b) {return a.id - b.id});
   filterResults.removeChild(filterResults.lastChild);
-  displayFilter();
+  displayTypeFilter();
 }
 
 function sortByDecreasingId() {
   listOfFilteredPkmArray.sort(function(a, b) {return b.id - a.id});
   filterResults.removeChild(filterResults.lastChild);
-  displayFilter();
+  displayTypeFilter();
 }
 
-let countName = 0;
-let countId = 0;
+function sortByIncreasingStat(stat) {
+  listOfFilteredPkmArray.sort(function(a, b){return a.stat_name - b.stat_name});
+  if (document.getElementById("filtered-pkm-list")) {
+    filterResults.removeChild(filterResults.lastChild);
+  }
+  displayStatFilter(stat);
+}
+
+function sortByDecreasingStat(stat) {
+  listOfFilteredPkmArray.sort(function(a, b){return b.stat_name - a.stat_name});
+  if (document.getElementById("filtered-pkm-list")) {
+    filterResults.removeChild(filterResults.lastChild);
+  }
+  displayStatFilter(stat);
+}
+
 filterType.addEventListener("click", () => {
   displayTypesFilters();
   const typesBtn = document.querySelectorAll(".type-button");
   typesBtn.forEach((btn) => {
+    let countName = 0;
+    let countId = 0;
     btn.addEventListener("click", () => {
       filterByType(btn); 
       sortIdButton = document.getElementById("sort-id-btn");
@@ -448,3 +500,37 @@ filterType.addEventListener("click", () => {
     });
   })
 });
+
+// filter pokemon by stats
+function filterByStat(stat) {
+  listOfFilteredPkmArray = [];
+  filterResults.innerHTML = `<p id="filter-results-header"><span id="pokemon-num">N°</span><button id="sort-id-btn"><span class="material-icons">expand_all</span></button><span>Pokémon</span><button id="sort-name-btn"><span class="material-icons">expand_all</span></button><span>${stat}</span><button id="sort-stat-btn"><span class="material-icons">expand_all</span></button></p>`;
+
+  pokemons.forEach((pokemon) => {
+    let pkmObject = { sprite: pokemon.sprite, id: pokemon.id, name: pokemon.name, stat_name: pokemon.stats[stat]};
+    listOfFilteredPkmArray.push(pkmObject);
+  });
+  
+  sortByIncreasingStat(stat);
+  return listOfFilteredPkmArray;
+}
+
+filterStats.forEach((stat) => {
+  let countStat = 0;
+  let statBtn = document.getElementById(`filter-${stat}`);
+  statBtn.addEventListener("click", () => {
+    filterResults.classList.remove("hidden");
+    pokemonStatistics.classList.add("hidden");
+    filterByStat(stat);
+    sortStatButton = document.getElementById("sort-stat-btn");
+    sortStatButton.addEventListener("click", () => {
+      if (countStat % 2 === 0) {
+        sortByIncreasingStat(stat);
+        countStat++;
+      } else {
+        sortByDecreasingStat(stat);
+        countStat++;
+      }
+    })
+  })
+})
