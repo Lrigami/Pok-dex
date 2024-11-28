@@ -670,8 +670,69 @@ main {
     padding: 0 15px;
 }
 
-#filter-results-header span:last-of-type {
-    padding-left: 60px;
+#pokemon-num {
+    padding-left: 28px;
+}
+
+#filter-results-header span:nth-of-type(2) {
+    padding-left: 25px;
+}
+
+#filter-results-header button {
+    height: 15px;
+    max-width: 30px;
+    background-color: transparent;
+    border: none;
+    color: var(--stats-text-color);
+    padding-left: 15px;
+}
+
+#filter-results-header button span {
+    height: 15px;
+    max-width: 20px;
+}
+
+#filter-results-header .material-icons {
+    font-size: 12px !important; 
+    color: var(--stats-text-color);
+}
+
+.type-button {
+    background-color: transparent;
+    border: none;
+    color: var(--stats-text-color);
+    font-family: var(--stats-font-family), Arial, Helvetica, sans-serif;
+}
+
+.filtered-pkm {
+    height: 30px;
+}
+
+.filtered-pkm button {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: transparent;
+    color: var(--stats-text-color);
+    border: none;
+    font-family: var(--stats-font-family), Arial, Helvetica, sans-serif;
+}
+
+.filtered-pkm button img {
+    height: 30px;
+}
+
+.filtered-pkm button span:first-of-type {
+    width: 35px;
+    margin-left: 20px;
+    text-align: start;
+}
+
+.filtered-pkm button span:last-of-type {
+    width: 100px;
+    margin-left: 35px;
+    text-align: start;
 }
 
 /* pokedex-right-buttons */

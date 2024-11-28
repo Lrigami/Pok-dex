@@ -47,6 +47,8 @@ const arrowLeft = document.getElementById("previous");
 const arrowRight = document.getElementById("next");
 const slideToRight = document.getElementById("slider-right");
 const slideToLeft = document.getElementById("slider-left");
+let sortIdButton;
+let sortNameButton;
 
 // number buttons
 const numberButtons = document.querySelectorAll("#number-buttons button");
@@ -55,6 +57,12 @@ const numberButtons = document.querySelectorAll("#number-buttons button");
 const searchBar = document.getElementById("pokemon-searchbar");
 const filterResults = document.getElementById("filter-results");
 const deleteButton = document.getElementById("delete-input");
+const filterType = document.getElementById("filter-type");
+const filterAttack = document.getElementById("filter-attack");
+const filterDefense = document.getElementById("filter-defense");
+const filterAttackSpe = document.getElementById("filter-attackspe");
+const filterDefenseSpe = document.getElementById("filter-defensespe");
+const filterSpeed = document.getElementById("filter-speed");
 
 // lights
 const redLight = document.getElementById("red-light");
@@ -65,6 +73,8 @@ const greenLight = document.getElementById("green-light")
 function clearPokemonDisplay() {
   currentPokemonId = null;
 
+  pokemonStatistics.classList.remove("hidden");
+  filterResults.classList.add("hidden");
   pokemonImage.setAttribute("src", "");
   pokemonImage.setAttribute("alt", "");
   pokemonSprite.setAttribute("src", "");
@@ -305,3 +315,136 @@ deleteButton.addEventListener("click", () => {
   searchBar.style.backgroundColor = "";
   clearPokemonDisplay();
 })
+
+const types = ["Acier", "Combat", "Dragon", "Eau", "\u00c9lectrik", "F\u00e9e", "Feu", "Glace", "Insecte", "Normal", "Plante", "Poison", "Psy", "Roche", "Sol", "Spectre", "T\u00e9n\u00e8bres", "Vol"];
+
+function displayTypesFilters() {
+  filterResults.classList.remove("hidden");
+  pokemonStatistics.classList.add("hidden");
+  filterResults.innerHTML = `<p>Choisissez un type&nbsp:</p>`;
+  let listOfTypes = document.createElement("ul");
+  types.forEach((type) => {
+    let typeElement = document.createElement("li");
+    let typeBtn = document.createElement("button");
+    typeBtn.classList.add("type-button");
+    typeBtn.innerText = type;
+    typeElement.appendChild(typeBtn);
+    listOfTypes.appendChild(typeElement);
+  });
+  filterResults.appendChild(listOfTypes);
+}
+
+let listOfFilteredPkmArray = [];
+
+function filterByType(btn) {
+  filterResults.innerHTML = `<p id="filter-results-header"><span id="pokemon-num">N°</span><button id="sort-id-btn"><span class="material-icons">expand_all</span></button><span>Pokémon</span><button id="sort-name-btn"><span class="material-icons">expand_all</span></button></p>`;
+
+  pokemons.forEach((pokemon) => {
+    if (pokemon.apiTypes[0].name == btn.innerText) {
+      let pkmObject = { sprite: pokemon.sprite, id: pokemon.id, name: pokemon.name};
+      listOfFilteredPkmArray.push(pkmObject);
+    } else if (pokemon.apiTypes[1] && pokemon.apiTypes[1].name == btn.innerText) {
+      let pkmObject = { sprite: pokemon.sprite, id: pokemon.id, name: pokemon.name};
+      listOfFilteredPkmArray.push(pkmObject);
+    }
+  })
+
+  displayFilter();
+  return listOfFilteredPkmArray;
+}
+
+function displayFilter() {
+  let listOfFilteredPkm = "";
+  listOfFilteredPkm = document.createElement("ul");
+  listOfFilteredPkmArray.forEach((pokemon) => {
+    let filteredPokemon = document.createElement("li");
+    filteredPokemon.classList.add("filtered-pkm");
+    let filteredPokemonBtn = document.createElement("button");
+    let filteredPokemonSprite = document.createElement("img");
+    filteredPokemonSprite.src = pokemon.sprite;
+    let filteredPokemonId = document.createElement("span");
+    filteredPokemonId.innerText = `${pokemon.id}`;
+    let filteredPokemonName = document.createElement("span");
+    filteredPokemonName.innerText = pokemon.name;
+
+    filteredPokemonBtn.appendChild(filteredPokemonSprite);
+    filteredPokemonBtn.appendChild(filteredPokemonId);
+    filteredPokemonBtn.appendChild(filteredPokemonName);
+
+    filteredPokemon.appendChild(filteredPokemonBtn);
+
+    listOfFilteredPkm.appendChild(filteredPokemon);
+  })
+
+  filterResults.appendChild(listOfFilteredPkm);
+}
+
+function sortByName() {
+  listOfFilteredPkmArray.sort(function(a, b) {
+  let x = a.name.toLowerCase();
+  let y = b.name.toLowerCase();
+  if (x < y) {return -1;}
+  if (x > y) {return 1;}
+  return 0;});
+  console.log(listOfFilteredPkmArray);
+  filterResults.removeChild(filterResults.lastChild);
+  displayFilter();
+}
+
+function sortByNameReverse() {
+  listOfFilteredPkmArray.sort(function(a, b) {
+  let x = a.name.toLowerCase();
+  let y = b.name.toLowerCase();
+  if (x > y) {return -1;}
+  if (x < y) {return 1;}
+  return 0;});
+  console.log(listOfFilteredPkmArray);
+  filterResults.removeChild(filterResults.lastChild);
+  displayFilter();
+}
+
+function sortByIncreasingId() {
+  listOfFilteredPkmArray.sort(function(a, b) {return a.id - b.id});
+  filterResults.removeChild(filterResults.lastChild);
+  displayFilter();
+}
+
+function sortByDecreasingId() {
+  listOfFilteredPkmArray.sort(function(a, b) {return b.id - a.id});
+  filterResults.removeChild(filterResults.lastChild);
+  displayFilter();
+}
+
+let countName = 0;
+let countId = 0;
+filterType.addEventListener("click", () => {
+  displayTypesFilters();
+  const typesBtn = document.querySelectorAll(".type-button");
+  typesBtn.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      filterByType(btn); 
+      sortIdButton = document.getElementById("sort-id-btn");
+      sortNameButton = document.getElementById("sort-name-btn");
+      sortNameButton.addEventListener("click", () => {
+        if (countName % 2 === 0) {
+          sortByName();
+          countName++;
+        }
+        else {
+          sortByNameReverse();
+          countName++;
+        }
+      }); 
+      sortIdButton.addEventListener("click", () => {
+        if (countId % 2 === 0) {
+          sortByIncreasingId();
+          countId++;
+        }
+        else {
+          sortByDecreasingId();
+          countId++;
+        }
+      }); 
+    });
+  })
+});
