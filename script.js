@@ -45,6 +45,8 @@ const arrowUp = document.getElementById("top");
 const arrowDown = document.getElementById("bottom");
 const arrowLeft = document.getElementById("previous");
 const arrowRight = document.getElementById("next");
+const slideToRight = document.getElementById("slider-right");
+const slideToLeft = document.getElementById("slider-left");
 
 // number buttons
 const numberButtons = document.querySelectorAll("#number-buttons button");
@@ -277,6 +279,16 @@ arrowDown.onclick = () => {
 arrowUp.onclick = () => {
   const sliderHeight = document.getElementById("pokedex-pokemon-img").offsetHeight;
   document.getElementById("pokedex-pokemon-img").scrollTop -= sliderHeight;
+}
+
+slideToRight.onclick = () => {
+  const sliderWidth = document.getElementById("filters-slider").offsetWidth;
+  document.getElementById("filters-slider").scrollLeft += sliderWidth;
+}
+
+slideToLeft.onclick = () => {
+  const sliderWidth = document.getElementById("filters-slider").offsetWidth;
+  document.getElementById("filters-slider").scrollLeft -= sliderWidth;
 }
 
 numberButtons.forEach((button) => {

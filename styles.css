@@ -778,8 +778,6 @@ main {
 }
 
 #filter-buttons button {
-    width: 140px;
-    height: 50px;
     border: none;
     background-color: var(--button-black);
     border-radius: 10px;
@@ -790,19 +788,36 @@ main {
 
 #filter-by {
     cursor: default;
+    width: 140px;
+    height: 50px;
+    margin-right: 10px;
 }
 
 #filters-slider {
     display: flex;
-    width: 140px;
+    width: 100px;
     overflow: hidden;
 }
 
 #filters-slider button {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    width: 140px;
+    height: 50px;
     min-width: 100%;
+    text-align: center;
+    border-radius: 0%;
+}
+
+#slider-left, #slider-right {
+    height: 50px;
+    width: 26px;
+}
+
+#slider-left {
+    border-radius: 10px 0 0 10px !important;
+}
+
+#slider-right {
+    border-radius: 0 10px 10px 0 !important;
 }
 
 /* footer */
