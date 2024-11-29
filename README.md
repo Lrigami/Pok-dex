@@ -13,9 +13,14 @@ We decided to use the Pokebuild API to generate the pokémon data automatically.
 We added a search bar so that users could immediately look up the data linked to a particular pokémon.
 We also decided to add navigation arrows to navigate through the pokédex, just like in the Pokémon games. The order in which the data is displayed depends on the pokémon id.
 
-## Screenshot
+## Features
 
-![image](https://github.com/user-attachments/assets/8af4f16f-1c86-4aec-8904-38580e541dff)
+![pokedex1](https://github.com/user-attachments/assets/66056abd-26d8-48b6-b218-26e655e31b9a)
+![pokedex2](https://github.com/user-attachments/assets/5c632aad-0e7f-4b08-9add-360f46dfb1de)
+![pokedex3](https://github.com/user-attachments/assets/384072d5-f02a-4589-8c6e-99ee2127b770)
+![pokedex4](https://github.com/user-attachments/assets/d02096bf-ad87-4710-a6df-ef01b63bf84f)
+![pokedex5](https://github.com/user-attachments/assets/a76b0735-bc2d-4cdd-a5a3-7d63c875333b)
+
 
 ## Contributors 
 
