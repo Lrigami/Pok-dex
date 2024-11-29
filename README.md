@@ -20,7 +20,7 @@ We also decided to add navigation arrows to navigate through the pokédex, just 
 ![pokedex3](https://github.com/user-attachments/assets/384072d5-f02a-4589-8c6e-99ee2127b770)
 ![pokedex4](https://github.com/user-attachments/assets/d02096bf-ad87-4710-a6df-ef01b63bf84f)
 ![pokedex5](https://github.com/user-attachments/assets/a76b0735-bc2d-4cdd-a5a3-7d63c875333b)
-
+![pokedex6](https://github.com/user-attachments/assets/39847aa9-780f-44ae-a53b-fd6914141236)
 
 ## Contributors 
 
