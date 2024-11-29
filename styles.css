@@ -684,7 +684,10 @@ main {
     background-color: transparent;
     border: none;
     color: var(--stats-text-color);
-    padding-left: 15px;
+}
+
+#pkm-stat-text {
+    margin-left: 30px;
 }
 
 #filter-results-header button span {
@@ -725,13 +728,18 @@ main {
 
 .filtered-pkm button span:first-of-type {
     width: 35px;
-    margin-left: 20px;
+    margin-left: 14px;
     text-align: start;
 }
 
-.filtered-pkm button span:last-of-type {
-    width: 100px;
-    margin-left: 35px;
+.filtered-pkm button span:nth-of-type(2) {
+    width: 105px;
+    margin-left: 10px;
+    text-align: start;
+}
+
+.filtered-pkm button span:nth-of-type(3) {
+    width: 30px;
     text-align: start;
 }
 
