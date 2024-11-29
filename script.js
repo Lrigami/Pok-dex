@@ -233,6 +233,8 @@ function turnOffLights() {
 
 function displayPokemon(pokemon, pokemonHW) {
   currentPokemonId = pokemon.id; // Met à jour l'ID actuel
+  filterResults.classList.add("hidden");
+  pokemonStatistics.classList.remove("hidden");
 
   const resistances = pokemon.apiResistances
     .filter(res => res.damage_relation === 'resistant' || res.damage_relation === 'twice_resistant')
@@ -374,6 +376,15 @@ function displayTypeFilter() {
     filteredPokemon.appendChild(filteredPokemonBtn);
 
     listOfFilteredPkm.appendChild(filteredPokemon);
+
+    filteredPokemonBtn.addEventListener("click", () => {
+      clearPokemonDisplay();
+      turnOnLights();
+      setTimeout(turnOffLights, 500);
+      const pkmToDisplay = pokemons.find(pkm => pkm.id === pokemon.id);
+      const pkmToDisplayHW = pokemonsHW.find(pkmHW => pkmHW.id === pokemon.id);
+      displayPokemon(pkmToDisplay, pkmToDisplayHW);
+    })
   })
 
   filterResults.appendChild(listOfFilteredPkm);
@@ -405,9 +416,19 @@ function displayStatFilter(stat) {
     filteredPokemon.appendChild(filteredPokemonBtn);
 
     listOfFilteredPkm.appendChild(filteredPokemon);
+
+    filteredPokemonBtn.addEventListener("click", () => {
+      clearPokemonDisplay();
+      turnOnLights();
+      setTimeout(turnOffLights, 500);
+      const pkmToDisplay = pokemons.find(pkm => pkm.id === pokemon.id);
+      const pkmToDisplayHW = pokemonsHW.find(pkmHW => pkmHW.id === pokemon.id);
+      displayPokemon(pkmToDisplay, pkmToDisplayHW);
+    })
   });
 
   filterResults.appendChild(listOfFilteredPkm);
+
 }
 
 // sort pkm by name
@@ -516,6 +537,7 @@ filterStats.forEach((stat) => {
   let countStat = 0;
   let statBtn = document.getElementById(`filter-${stat}`);
   statBtn.addEventListener("click", () => {
+    clearPokemonDisplay();
     filterResults.classList.remove("hidden");
     pokemonStatistics.classList.add("hidden");
     filterByStat(stat);
