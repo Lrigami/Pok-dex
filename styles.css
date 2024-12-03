@@ -744,7 +744,7 @@ main {
     text-align: start;
 }
 
-#filtered-pkm-list {
+#filtered-pkm-list, #list-of-types, .list-of-filtered-pkm {
     list-style-type: none;
 }
 
