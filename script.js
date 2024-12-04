@@ -255,6 +255,12 @@ function displayPokemon(pokemon, pokemonHW) {
   pokemonImage.setAttribute("alt", `${pokemon.name}`);
   pokemonSprite.setAttribute("src", `${pokemon.sprite}`);
   pokemonSprite.setAttribute("alt", `${pokemon.name}`);
+  pokemonImage.onerror = () => {
+    pokemonImage.src = "./erreur404.png";
+  }
+  pokemonSprite.onerror = () => {
+    pokemonSprite.src = "./erreur404.png";
+  }
 
   pokemonHeight.innerText = ` ${pokemonHW.taille} cm`;
   pokemonWeight.innerText = ` ${pokemonHW.poids} kg`;
